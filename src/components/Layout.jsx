@@ -12,7 +12,7 @@ export default function Layout({ children }) {
       <Link
         to={to}
         className={`text-sm tracking-tight transition-colors ${
-          active ? 'text-terra-600 font-medium' : 'text-ink-700 hover:text-ink-900'
+          active ? 'text-navy-800 font-medium' : 'text-ink-700 hover:text-ink-900'
         }`}
       >
         {label}
@@ -23,16 +23,16 @@ export default function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
       {!connected && (
-        <div className="bg-ink-900 text-paper-50 text-xs py-2 px-4 text-center font-mono tracking-tight">
+        <div className="bg-ink-900 text-white text-xs py-2 px-4 text-center font-mono tracking-tight">
           DEMO MODE — Supabase 미연동. 데이터는 브라우저 로컬에만 저장됩니다.
         </div>
       )}
 
-      <header className="border-b border-ink-900/10 bg-paper-50/95 backdrop-blur-sm sticky top-0 z-40">
+      <header className="border-b border-ink-900/10 bg-white/95 backdrop-blur-sm sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
           <Link to="/" className="flex items-baseline gap-3 group">
             <span className="serif-display text-2xl font-black tracking-tightest text-ink-900">
-              Fail<span className="text-terra-600">Bank</span>
+              Fail<span className="text-navy-800">Bank</span>
             </span>
             <span className="text-[10px] tracking-[0.2em] text-ink-500 uppercase hidden sm:inline">
               EST. 2026

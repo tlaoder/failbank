@@ -98,7 +98,7 @@ export default function SubmitPage() {
 
       {/* Header */}
       <div className="border-b-2 border-ink-900 pb-8 mb-10">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           New Report
         </div>
         <h1 className="serif-display text-5xl font-black tracking-tightest mb-3">
@@ -159,7 +159,7 @@ export default function SubmitPage() {
           </section>
 
           {/* Step navigator */}
-          <div className="flex gap-1 sticky top-20 z-20 bg-paper-50/95 backdrop-blur-sm py-3 -mx-4 px-4 border-y border-ink-900/10">
+          <div className="flex gap-1 sticky top-20 z-20 bg-white/95 backdrop-blur-sm py-3 -mx-4 px-4 border-y border-ink-900/10">
             {STEPS.map((s, i) => {
               const filled = content[s.key].trim().length >= s.min
               return (
@@ -168,9 +168,9 @@ export default function SubmitPage() {
                   onClick={() => setActiveStep(i)}
                   className={`flex-1 py-2 text-xs tracking-tight transition-colors border-b-2 ${
                     activeStep === i
-                      ? 'border-terra-500 text-terra-600 font-medium'
+                      ? 'border-navy-700 text-navy-800 font-medium'
                       : filled
-                      ? 'border-sage-500 text-sage-600'
+                      ? 'border-ink-300 text-ink-700'
                       : 'border-ink-900/20 text-ink-500'
                   }`}
                 >
@@ -185,7 +185,7 @@ export default function SubmitPage() {
           {STEPS.map((s, i) => (
             <section key={s.key} className={i === activeStep ? '' : 'hidden'}>
               <div className="flex items-baseline gap-3 mb-2">
-                <span className="font-mono text-xs text-terra-600 tracking-widest">STEP {s.n}</span>
+                <span className="font-mono text-xs text-navy-800 tracking-widest">STEP {s.n}</span>
                 <h2 className="serif-display text-2xl font-bold">{s.title}</h2>
               </div>
               <p className="text-sm text-ink-500 mb-4 leading-relaxed">{s.desc}</p>
@@ -198,17 +198,17 @@ export default function SubmitPage() {
                 maxLength={3000}
               />
               <div className="flex items-center justify-between mt-2 text-xs font-mono">
-                <span className={content[s.key].length >= s.min ? 'text-sage-600' : 'text-ink-500'}>
+                <span className={content[s.key].length >= s.min ? 'text-ink-700' : 'text-ink-500'}>
                   {content[s.key].length} / 3,000자 (최소 {s.min}자)
                 </span>
                 <div className="flex gap-2">
                   {i > 0 && (
-                    <button onClick={() => setActiveStep(i - 1)} className="text-ink-700 hover:text-terra-600">
+                    <button onClick={() => setActiveStep(i - 1)} className="text-ink-700 hover:text-navy-800">
                       ← 이전
                     </button>
                   )}
                   {i < STEPS.length - 1 && (
-                    <button onClick={() => setActiveStep(i + 1)} className="text-terra-600 hover:underline ml-3">
+                    <button onClick={() => setActiveStep(i + 1)} className="text-navy-800 hover:underline ml-3">
                       다음 →
                     </button>
                   )}
@@ -238,7 +238,7 @@ export default function SubmitPage() {
         {/* Live evaluation sidebar */}
         <aside className="lg:col-span-4">
           <div className="sticky top-24 paper-card p-6">
-            <div className="text-[10px] tracking-[0.2em] text-terra-600 uppercase font-mono mb-4">
+            <div className="text-[10px] tracking-[0.2em] text-navy-800 uppercase font-mono mb-4">
               AI 실시간 평가
             </div>
 
@@ -250,9 +250,9 @@ export default function SubmitPage() {
                 <div className="text-xs text-ink-500 font-mono">/ 100점</div>
               </div>
               <div className={`grade-stamp ${
-                evaluation.grade === 'S' ? 'text-terra-600' :
-                evaluation.grade === 'A' ? 'text-gold-600' :
-                evaluation.grade === 'B' ? 'text-sage-600' : 'text-ink-500'
+                evaluation.grade === 'S' ? 'text-navy-800' :
+                evaluation.grade === 'A' ? 'text-ink-700' :
+                evaluation.grade === 'B' ? 'text-ink-700' : 'text-ink-500'
               }`}>
                 {evaluation.grade}
               </div>
@@ -267,9 +267,9 @@ export default function SubmitPage() {
                       {b.score} / {b.max}
                     </span>
                   </div>
-                  <div className="h-1 bg-paper-200 overflow-hidden">
+                  <div className="h-1 bg-ink-100 overflow-hidden">
                     <div
-                      className="h-full bg-terra-500 transition-all duration-500"
+                      className="h-full bg-navy-700 transition-all duration-500"
                       style={{ width: `${(b.score / b.max) * 100}%` }}
                     />
                   </div>
@@ -291,7 +291,7 @@ export default function SubmitPage() {
             </div>
 
             {showResult && evaluation.total < 60 && (
-              <div className="mt-6 p-3 bg-terra-500/10 border-l-2 border-terra-500 text-xs text-ink-700">
+              <div className="mt-6 p-3 bg-navy-700/10 border-l-2 border-navy-700 text-xs text-ink-700">
                 점수가 낮습니다. 정량적 데이터(금액·기간·수치)와 구체적인 행동 가능한 교훈을 추가해보세요.
               </div>
             )}

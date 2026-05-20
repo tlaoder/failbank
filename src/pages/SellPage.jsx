@@ -45,12 +45,12 @@ export default function SellPage() {
 
       {/* HERO — 솔직한 톤으로 시작 */}
       <header className="border-b-2 border-ink-900 pb-10 mb-12">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-4">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-4">
           For Sellers · 판매자 안내
         </div>
         <h1 className="serif-display text-5xl md:text-6xl font-black tracking-tightest leading-[1.05] mb-6">
           폐업했는데<br/>
-          <span className="italic text-terra-600">왜 글까지 써야</span> 합니까?
+          <span className="italic text-navy-800">왜 글까지 써야</span> 합니까?
         </h1>
         <p className="text-lg text-ink-700 leading-relaxed max-w-2xl">
           솔직히 말합니다. 1건당 4,000원 받자고 시간 쓸 사람은 없습니다.
@@ -60,7 +60,7 @@ export default function SellPage() {
 
       {/* 4대 동기 — 솔직하게 */}
       <section className="mb-20">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           The Four Motives
         </div>
         <h2 className="serif-display text-4xl font-black tracking-tightest mb-10">
@@ -97,27 +97,27 @@ export default function SellPage() {
       </section>
 
       {/* 부트스트랩 캠페인 — 핵심 차별점 */}
-      <section className="mb-20 -mx-6 px-6 py-16 bg-terra-500 text-paper-50">
+      <section className="mb-20 -mx-6 px-6 py-16 bg-navy-700 text-white">
         <div className="max-w-4xl">
-          <div className="text-xs tracking-[0.3em] text-paper-200 uppercase font-mono mb-4">
+          <div className="text-xs tracking-[0.3em] text-ink-200 uppercase font-mono mb-4">
             Bootstrap Campaign · 초기 부트스트랩
           </div>
           <h2 className="serif-display text-5xl font-black tracking-tightest mb-6 leading-tight">
             처음 100명, 수수료 <span className="italic">0%</span>.
           </h2>
-          <p className="text-paper-100 text-lg leading-relaxed mb-8 max-w-2xl">
+          <p className="text-ink-100 text-lg leading-relaxed mb-8 max-w-2xl">
             양면 플랫폼은 초기 공급자가 가장 어렵습니다 (Rochet & Tirole, 2003).
-            그래서 첫 100명 판매자에게 <strong className="text-paper-50">수수료를 받지 않습니다.</strong>
+            그래서 첫 100명 판매자에게 <strong className="text-white">수수료를 받지 않습니다.</strong>
             대신 정부 재도전 지원사업·폐업 사업자 커뮤니티와 제휴해 모집합니다.
           </p>
 
-          <div className="grid sm:grid-cols-3 gap-px bg-paper-50/20">
+          <div className="grid sm:grid-cols-3 gap-px bg-white/20">
             <BootstrapStat n="0%" l="첫 100명 수수료" />
             <BootstrapStat n="3개월" l="캠페인 기간" />
             <BootstrapStat n="100%" l="판매자 정산" />
           </div>
 
-          <p className="text-paper-200 text-sm mt-6 italic">
+          <p className="text-ink-200 text-sm mt-6 italic">
             * 캠페인 종료 후에도 기본 정산률 80%, 품질 90점 이상 85%는 유지됩니다.
           </p>
         </div>
@@ -125,7 +125,7 @@ export default function SellPage() {
 
       {/* 정산 계산기 — 인터랙티브 */}
       <section className="mb-20">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           Earnings Calculator
         </div>
         <h2 className="serif-display text-4xl font-black tracking-tightest mb-3">
@@ -168,7 +168,7 @@ export default function SellPage() {
                 type="range"
                 min="50" max="100" value={score}
                 onChange={e => setScore(Number(e.target.value))}
-                className="w-full accent-terra-500"
+                className="w-full accent-navy-700"
               />
               <div className="flex justify-between text-[10px] text-ink-500 font-mono mt-1">
                 <span>D 50</span><span>C 60</span><span>B 70</span>
@@ -190,7 +190,7 @@ export default function SellPage() {
                 type="range"
                 min="1" max="100" value={monthlySales}
                 onChange={e => setMonthlySales(Number(e.target.value))}
-                className="w-full accent-terra-500"
+                className="w-full accent-navy-700"
               />
               <div className="flex justify-between text-[10px] text-ink-500 font-mono mt-1">
                 <span>1</span><span>25</span><span>50</span>
@@ -202,7 +202,7 @@ export default function SellPage() {
           {/* 결과 카드 */}
           <div className="lg:col-span-5">
             <div className="paper-card p-6 sticky top-24">
-              <div className="text-[10px] tracking-[0.2em] text-terra-600 uppercase font-mono mb-4">
+              <div className="text-[10px] tracking-[0.2em] text-navy-800 uppercase font-mono mb-4">
                 예상 정산액 · {calc.tierName}
               </div>
 
@@ -218,7 +218,7 @@ export default function SellPage() {
 
               <div className="pb-5 border-b border-ink-900/10 mb-5">
                 <div className="text-xs text-ink-500 mb-1">월 정산 예상</div>
-                <div className="serif-display text-4xl font-black text-terra-600 tabular-nums">
+                <div className="serif-display text-4xl font-black text-navy-800 tabular-nums">
                   {calc.monthly.toLocaleString()}<span className="text-base text-ink-500">원</span>
                 </div>
               </div>
@@ -231,7 +231,7 @@ export default function SellPage() {
               </div>
 
               {calc.bootstrapBonus > 0 && (
-                <div className="mt-5 p-3 bg-terra-500/10 border-l-2 border-terra-500 text-xs text-ink-700">
+                <div className="mt-5 p-3 bg-navy-700/10 border-l-2 border-navy-700 text-xs text-ink-700">
                   💡 부트스트랩 기간(첫 3개월)에는 수수료 0%로
                   추가 <strong>+{calc.bootstrapBonus.toLocaleString()}원/월</strong> 정산됩니다.
                 </div>
@@ -243,7 +243,7 @@ export default function SellPage() {
 
       {/* 프리미엄 티어 비교표 */}
       <section className="mb-20">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           Premium Tiers
         </div>
         <h2 className="serif-display text-4xl font-black tracking-tightest mb-10">
@@ -293,7 +293,7 @@ export default function SellPage() {
 
       {/* 신뢰 신호 — 검증 배지 */}
       <section className="mb-20">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           Trust & Verification
         </div>
         <h2 className="serif-display text-4xl font-black tracking-tightest mb-3">
@@ -315,14 +315,14 @@ export default function SellPage() {
           <VerifyTier
             level="업종 공개"
             badge="◐"
-            badgeColor="text-sage-600"
+            badgeColor="text-ink-700"
             description="업종·지역·운영 기간만 공개. 신원은 비공개."
             tradeoff="신뢰도 중간, 가격 +20%"
           />
           <VerifyTier
             level="실명 검증"
             badge="●"
-            badgeColor="text-terra-600"
+            badgeColor="text-navy-800"
             description="사업자등록증·세금 신고 기록 인증. 실명 또는 활동명 공개."
             tradeoff="신뢰도 ↑, 가격 +50%, 엔터프라이즈 거래 가능"
           />
@@ -379,8 +379,8 @@ export default function SellPage() {
 
 function MotiveCard({ n, title, subtitle, body, highlight = false }) {
   return (
-    <div className={`p-8 ${highlight ? 'bg-paper-100' : 'bg-paper-50'}`}>
-      <div className="font-mono text-xs text-terra-600 tracking-widest mb-2">
+    <div className={`p-8 ${highlight ? 'bg-ink-50' : 'bg-white'}`}>
+      <div className="font-mono text-xs text-navy-800 tracking-widest mb-2">
         MOTIVE {n}
       </div>
       <div className="serif-display text-2xl font-bold mb-1">{title}</div>
@@ -394,11 +394,11 @@ function MotiveCard({ n, title, subtitle, body, highlight = false }) {
 
 function BootstrapStat({ n, l }) {
   return (
-    <div className="bg-terra-500 p-5">
+    <div className="bg-navy-700 p-5">
       <div className="serif-display text-4xl font-black tabular-nums tracking-tightest leading-none">
         {n}
       </div>
-      <div className="text-xs text-paper-200 mt-1">{l}</div>
+      <div className="text-xs text-ink-200 mt-1">{l}</div>
     </div>
   )
 }
@@ -409,12 +409,12 @@ function TierButton({ active, onClick, label, sub }) {
       onClick={onClick}
       className={`p-3 text-left transition-colors border-2 ${
         active
-          ? 'bg-ink-900 text-paper-50 border-ink-900'
-          : 'bg-paper-50 text-ink-700 border-ink-900/20 hover:border-terra-500'
+          ? 'bg-ink-900 text-white border-ink-900'
+          : 'bg-white text-ink-700 border-ink-900/20 hover:border-navy-700'
       }`}
     >
       <div className="text-sm font-medium">{label}</div>
-      <div className={`text-[10px] font-mono mt-0.5 ${active ? 'text-paper-200' : 'text-ink-500'}`}>
+      <div className={`text-[10px] font-mono mt-0.5 ${active ? 'text-ink-200' : 'text-ink-500'}`}>
         {sub}
       </div>
     </button>
@@ -423,9 +423,9 @@ function TierButton({ active, onClick, label, sub }) {
 
 function TierCard({ name, price, commission, features, note, highlight = false }) {
   return (
-    <div className={`p-8 ${highlight ? 'bg-paper-100 border-t-4 border-terra-500' : 'bg-paper-50'}`}>
+    <div className={`p-8 ${highlight ? 'bg-ink-50 border-t-4 border-navy-700' : 'bg-white'}`}>
       {highlight && (
-        <div className="text-[10px] tracking-[0.2em] text-terra-600 uppercase font-mono mb-2">
+        <div className="text-[10px] tracking-[0.2em] text-navy-800 uppercase font-mono mb-2">
           Recommended
         </div>
       )}
@@ -435,7 +435,7 @@ function TierCard({ name, price, commission, features, note, highlight = false }
       <ul className="space-y-2 mb-6">
         {features.map((f, i) => (
           <li key={i} className="text-sm text-ink-700 flex gap-2">
-            <span className="text-terra-600">✓</span>
+            <span className="text-navy-800">✓</span>
             <span>{f}</span>
           </li>
         ))}

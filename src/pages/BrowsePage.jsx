@@ -19,7 +19,7 @@ export default function BrowsePage() {
     <div className="max-w-6xl mx-auto px-6 py-12">
       {/* Header */}
       <div className="border-b border-ink-900/20 pb-8 mb-10">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           Marketplace
         </div>
         <h1 className="serif-display text-5xl font-black tracking-tightest mb-3">
@@ -63,8 +63,8 @@ export default function BrowsePage() {
                 onClick={() => setSortBy(k)}
                 className={`px-4 py-2 text-sm tracking-tight transition-colors ${
                   sortBy === k
-                    ? 'bg-ink-900 text-paper-50'
-                    : 'bg-paper-100 text-ink-700 hover:bg-paper-200'
+                    ? 'bg-ink-900 text-white'
+                    : 'bg-ink-50 text-ink-700 hover:bg-ink-100'
                 }`}
               >
                 {label}
@@ -84,7 +84,7 @@ export default function BrowsePage() {
           <div className="serif-display text-2xl text-ink-500 mb-2">
             아직 등록된 리포트가 없습니다.
           </div>
-          <Link to="/submit" className="text-terra-600 hover:underline">
+          <Link to="/submit" className="text-navy-800 hover:underline">
             첫 리포트를 등록해보세요 →
           </Link>
         </div>
@@ -94,14 +94,14 @@ export default function BrowsePage() {
             <Link
               key={r.id}
               to={`/report/${r.id}`}
-              className="bg-paper-50 hover:bg-paper-100 transition-colors p-6 group"
+              className="bg-white hover:bg-ink-50 transition-colors p-6 group"
             >
               <div className="grid md:grid-cols-12 gap-4 items-start">
                 <div className="md:col-span-1">
                   <div className={`grade-stamp ${
-                    r.grade === 'S' ? 'text-terra-600' :
-                    r.grade === 'A' ? 'text-gold-600' :
-                    r.grade === 'B' ? 'text-sage-600' : 'text-ink-500'
+                    r.grade === 'S' ? 'text-navy-800' :
+                    r.grade === 'A' ? 'text-ink-700' :
+                    r.grade === 'B' ? 'text-ink-700' : 'text-ink-500'
                   }`}>
                     {r.grade}
                   </div>
@@ -111,13 +111,13 @@ export default function BrowsePage() {
                   <div className="text-[10px] tracking-[0.2em] text-ink-500 uppercase font-mono mb-2">
                     {r.category} · {new Date(r.created_at).toLocaleDateString('ko-KR')}
                   </div>
-                  <h3 className="serif-display text-xl font-bold leading-tight mb-3 group-hover:text-terra-600 transition-colors">
+                  <h3 className="serif-display text-xl font-bold leading-tight mb-3 group-hover:text-navy-800 transition-colors">
                     {r.title}
                   </h3>
                   {r.keywords && r.keywords.length > 0 && (
                     <div className="flex flex-wrap gap-1.5">
                       {r.keywords.slice(0, 4).map(k => (
-                        <span key={k} className="text-[10px] px-2 py-0.5 bg-paper-200 text-ink-700 font-mono">
+                        <span key={k} className="text-[10px] px-2 py-0.5 bg-ink-100 text-ink-700 font-mono">
                           #{k}
                         </span>
                       ))}
@@ -156,8 +156,8 @@ function CategoryChip({ active, onClick, children }) {
       onClick={onClick}
       className={`px-3 py-1.5 text-sm transition-colors ${
         active
-          ? 'bg-terra-500 text-paper-50'
-          : 'bg-paper-100 text-ink-700 hover:bg-paper-200'
+          ? 'bg-navy-700 text-white'
+          : 'bg-ink-50 text-ink-700 hover:bg-ink-100'
       }`}
     >
       {children}

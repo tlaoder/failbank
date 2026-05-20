@@ -16,12 +16,12 @@ export default function HomePage() {
       <section className="pt-16 pb-20 border-b border-ink-900/20">
         <div className="grid md:grid-cols-12 gap-8 items-end">
           <div className="md:col-span-8">
-            <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-6 font-mono">
+            <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-6 font-mono">
               Vol. 01 — 시행착오 자산화 플랫폼
             </div>
             <h1 className="serif-display text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-tightest text-ink-900 mb-8">
               먼저 망해본 사람의<br/>
-              <span className="italic text-terra-600">리포트</span>로<br/>
+              <span className="italic text-navy-800">리포트</span>로<br/>
               시행착오를 줄이세요.
             </h1>
             <p className="text-lg text-ink-700 leading-relaxed max-w-xl mb-10">
@@ -37,18 +37,18 @@ export default function HomePage() {
 
           <div className="md:col-span-4">
             {/* Sidebar pull quote */}
-            <div className="paper-card p-6 border-l-4 border-terra-500">
+            <div className="paper-card p-6 border-l-4 border-navy-700">
               <div className="text-[10px] tracking-[0.2em] text-ink-500 uppercase font-mono mb-3">
                 Government Statistics 2024
               </div>
-              <div className="serif-display text-5xl font-black text-terra-600 mb-1 tabular-nums">
+              <div className="serif-display text-5xl font-black text-navy-800 mb-1 tabular-nums">
                 73.3<span className="text-2xl">%</span>
               </div>
               <div className="text-sm text-ink-700 mb-4">
                 재창업 기업의 5년 생존율
               </div>
               <div className="text-xs text-ink-500 border-t border-ink-900/10 pt-3">
-                일반 창업 29.2% 대비 <span className="text-terra-600 font-medium">2.5배</span>.
+                일반 창업 29.2% 대비 <span className="text-navy-800 font-medium">2.5배</span>.
                 <br/>실패 경험은 가장 강력한 학습 자산입니다.
               </div>
             </div>
@@ -70,14 +70,14 @@ export default function HomePage() {
       <section className="py-20">
         <div className="flex items-end justify-between mb-10">
           <div>
-            <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+            <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
               This week's reports
             </div>
             <h2 className="serif-display text-4xl font-black tracking-tightest">
               이번 주 인기 리포트
             </h2>
           </div>
-          <Link to="/browse" className="text-sm text-ink-700 hover:text-terra-600 hidden sm:block">
+          <Link to="/browse" className="text-sm text-ink-700 hover:text-navy-800 hidden sm:block">
             전체 보기 →
           </Link>
         </div>
@@ -87,7 +87,7 @@ export default function HomePage() {
             <Link
               key={r.id}
               to={`/report/${r.id}`}
-              className="group paper-card p-6 hover:border-terra-500 transition-colors animate-fade-up"
+              className="group paper-card p-6 hover:border-navy-700 transition-colors animate-fade-up"
               style={{ animationDelay: `${i * 80}ms` }}
             >
               <div className="flex items-start justify-between mb-4">
@@ -95,13 +95,13 @@ export default function HomePage() {
                   {r.category}
                 </div>
                 <div className={`grade-stamp text-sm ${
-                  r.grade === 'S' ? 'text-terra-600' :
-                  r.grade === 'A' ? 'text-gold-600' : 'text-sage-600'
+                  r.grade === 'S' ? 'text-navy-800' :
+                  r.grade === 'A' ? 'text-ink-700' : 'text-ink-700'
                 }`} style={{ width: '2.25rem', height: '2.25rem', fontSize: '1rem' }}>
                   {r.grade}
                 </div>
               </div>
-              <h3 className="serif-display text-xl font-bold leading-tight mb-4 group-hover:text-terra-600 transition-colors line-clamp-3">
+              <h3 className="serif-display text-xl font-bold leading-tight mb-4 group-hover:text-navy-800 transition-colors line-clamp-3">
                 {r.title}
               </h3>
               <div className="flex items-baseline justify-between pt-4 border-t border-ink-900/10">
@@ -120,7 +120,7 @@ export default function HomePage() {
 
       {/* HOW IT WORKS */}
       <section className="py-20 border-t border-ink-900/10">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase mb-3 font-mono">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-3 font-mono">
           How it works
         </div>
         <h2 className="serif-display text-4xl font-black tracking-tightest mb-12">
@@ -135,7 +135,7 @@ export default function HomePage() {
             { n: '05', t: '교훈', d: '다음에는 다를 행동' },
           ].map((step, i) => (
             <div key={step.n} className="relative">
-              <div className="font-mono text-xs text-terra-600 mb-3 tracking-widest">
+              <div className="font-mono text-xs text-navy-800 mb-3 tracking-widest">
                 STEP {step.n}
               </div>
               <div className="serif-display text-2xl font-bold mb-2">{step.t}</div>
@@ -149,28 +149,28 @@ export default function HomePage() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 mt-12 bg-ink-900 text-paper-50 -mx-6 px-6 sm:rounded-sm">
+      <section className="py-20 mt-12 bg-ink-900 text-white -mx-6 px-6 sm:rounded-sm">
         <div className="max-w-3xl">
-          <div className="text-xs tracking-[0.3em] text-terra-400 uppercase mb-4 font-mono">
+          <div className="text-xs tracking-[0.3em] text-navy-600 uppercase mb-4 font-mono">
             Join FailBank
           </div>
           <h2 className="serif-display text-4xl sm:text-5xl font-black tracking-tightest mb-6 leading-tight">
-            당신의 실패가<br/>누군가의 <span className="italic text-terra-400">생존</span>이 됩니다.
+            당신의 실패가<br/>누군가의 <span className="italic text-navy-600">생존</span>이 됩니다.
           </h2>
-          <p className="text-paper-200 mb-8 leading-relaxed">
+          <p className="text-ink-200 mb-8 leading-relaxed">
             폐업 경험을 5단계로 정리하고 AI 자동 평가를 받아보세요.
             첫 100명 판매자는 수수료 0% — 정산 100% 받습니다.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link
               to="/sell"
-              className="inline-block bg-terra-500 text-paper-50 px-8 py-4 font-medium tracking-tight hover:bg-terra-400 transition-colors"
+              className="inline-block bg-navy-700 text-white px-8 py-4 font-medium tracking-tight hover:bg-navy-600 transition-colors"
             >
               판매자 혜택 보기 →
             </Link>
             <Link
               to="/submit"
-              className="inline-block bg-transparent text-paper-50 border border-paper-200 px-8 py-4 font-medium tracking-tight hover:bg-paper-50 hover:text-ink-900 transition-colors"
+              className="inline-block bg-transparent text-white border border-ink-200 px-8 py-4 font-medium tracking-tight hover:bg-white hover:text-ink-900 transition-colors"
             >
               바로 작성하기
             </Link>
@@ -183,7 +183,7 @@ export default function HomePage() {
 
 function Stat({ number, label, sub, highlight = false }) {
   return (
-    <div className={`p-6 ${highlight ? 'bg-terra-500 text-paper-50' : 'bg-paper-50'}`}>
+    <div className={`p-6 ${highlight ? 'bg-navy-700 text-white' : 'bg-white'}`}>
       <div className={`serif-display text-3xl md:text-4xl font-black mb-1 tabular-nums tracking-tightest ${
         highlight ? '' : 'text-ink-900'
       }`}>
@@ -192,7 +192,7 @@ function Stat({ number, label, sub, highlight = false }) {
       <div className={`text-sm font-medium mb-1 ${highlight ? '' : 'text-ink-900'}`}>
         {label}
       </div>
-      <div className={`text-xs ${highlight ? 'text-paper-200' : 'text-ink-500'}`}>
+      <div className={`text-xs ${highlight ? 'text-ink-200' : 'text-ink-500'}`}>
         {sub}
       </div>
     </div>

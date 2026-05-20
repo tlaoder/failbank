@@ -8,80 +8,68 @@
     -moz-osx-font-smoothing: grayscale;
   }
   body {
-    @apply bg-paper-50 text-ink-900 font-sans;
-    background-image:
-      radial-gradient(circle at 20% 10%, rgba(184, 80, 66, 0.04) 0, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(132, 160, 142, 0.04) 0, transparent 50%);
+    @apply bg-white text-ink-900 font-sans;
     min-height: 100vh;
   }
 }
 
 @layer components {
   .paper-card {
-    @apply bg-paper-50 border border-ink-900/10 relative;
-    background-image:
-      linear-gradient(180deg, rgba(255,255,255,0.4) 0%, transparent 100%);
+    @apply bg-white border border-ink-200 rounded-lg;
+    transition: border-color 0.2s ease;
   }
-  .paper-card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    background-image:
-      url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.025 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  .paper-card:hover {
+    @apply border-ink-300;
   }
   .btn-primary {
-    @apply bg-ink-900 text-paper-50 px-6 py-3 font-medium tracking-tight
-           hover:bg-terra-600 transition-colors duration-200
+    @apply bg-navy-800 text-white px-6 py-3 font-medium tracking-tight rounded-md
+           hover:bg-navy-700 transition-colors duration-200
            disabled:opacity-40 disabled:cursor-not-allowed;
   }
   .btn-secondary {
-    @apply bg-transparent text-ink-900 border border-ink-900 px-6 py-3 font-medium tracking-tight
-           hover:bg-ink-900 hover:text-paper-50 transition-colors duration-200;
+    @apply bg-white text-ink-900 border border-ink-300 px-6 py-3 font-medium tracking-tight rounded-md
+           hover:border-ink-900 hover:bg-ink-50 transition-colors duration-200;
   }
   .input-field {
-    @apply w-full bg-paper-50 border-b-2 border-ink-900/30 px-0 py-3
-           focus:border-terra-500 focus:outline-none transition-colors
-           placeholder:text-ink-500/60;
+    @apply w-full bg-white border border-ink-200 rounded-md px-4 py-3
+           focus:border-navy-700 focus:ring-2 focus:ring-navy-700/10 focus:outline-none transition-all
+           placeholder:text-ink-400;
   }
   .textarea-field {
-    @apply w-full bg-paper-100/50 border border-ink-900/20 p-4 rounded-sm
-           focus:border-terra-500 focus:outline-none transition-colors
-           placeholder:text-ink-500/60 resize-none;
+    @apply w-full bg-white border border-ink-200 rounded-md p-4
+           focus:border-navy-700 focus:ring-2 focus:ring-navy-700/10 focus:outline-none transition-all
+           placeholder:text-ink-400 resize-none;
   }
 }
 
-/* Editorial flourishes */
+/* No serif - everything is Pretendard now */
 .serif-display {
-  font-family: 'Noto Serif KR', Georgia, serif;
-  font-feature-settings: "ss01" on;
+  font-family: 'Pretendard', system-ui, sans-serif;
+  letter-spacing: -0.025em;
 }
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
 
-/* Subtle reveal animation */
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(8px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up {
-  animation: fadeUp 0.5s ease-out forwards;
+  animation: fadeUp 0.4s ease-out forwards;
 }
 
-/* Ribbon stamp for grades */
+/* Modern minimalist grade badge */
 .grade-stamp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
-  border: 2px solid currentColor;
-  border-radius: 999px;
-  font-family: 'Noto Serif KR', Georgia, serif;
-  font-weight: 900;
-  font-size: 1.5rem;
-  transform: rotate(-6deg);
+  width: 3rem;
+  height: 3rem;
+  border: 1.5px solid currentColor;
+  border-radius: 0.375rem;
+  font-weight: 700;
+  font-size: 1.125rem;
   letter-spacing: -0.02em;
 }

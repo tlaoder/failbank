@@ -4,7 +4,7 @@ export default function AboutPage() {
 
       {/* Headline */}
       <header className="border-b-2 border-ink-900 pb-10 mb-12">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-4">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-4">
           About
         </div>
         <h1 className="serif-display text-5xl md:text-6xl font-black tracking-tightest leading-[1.05] mb-6">
@@ -18,15 +18,15 @@ export default function AboutPage() {
 
       {/* The Discovery */}
       <section className="mb-16">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-3">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-3">
           The Discovery
         </div>
         <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
           결정적 발견
         </h2>
-        <div className="paper-card p-8 border-l-4 border-terra-500 mb-6">
+        <div className="paper-card p-8 border-l-4 border-navy-700 mb-6">
           <div className="serif-display text-2xl italic leading-relaxed text-ink-800">
-            “재창업 기업의 5년 생존율 <span className="text-terra-600 font-black not-italic">73.3%</span>
+            “재창업 기업의 5년 생존율 <span className="text-navy-800 font-black not-italic">73.3%</span>
             {' '}vs 일반 창업 <span className="font-black not-italic">29.2%</span>”
           </div>
           <div className="text-xs text-ink-500 mt-4 font-mono">
@@ -39,7 +39,7 @@ export default function AboutPage() {
         </p>
         <p className="text-ink-700 leading-[1.85] text-[17px] mt-4">
           그렇다면 자연스러운 질문이 제기됩니다 —
-          <span className="serif-display italic text-terra-600">
+          <span className="serif-display italic text-navy-800">
             {' '}“내가 직접 실패하지 않고도, 다른 사람의 실패 경험을 구매하여 학습할 수 있다면?”
           </span>
           {' '}이 질문에 답하는 플랫폼이 FailBank입니다.
@@ -48,7 +48,7 @@ export default function AboutPage() {
 
       {/* Why now */}
       <section className="mb-16">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-3">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-3">
           Why now
         </div>
         <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
@@ -63,7 +63,7 @@ export default function AboutPage() {
 
       {/* Academic */}
       <section className="mb-16">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-3">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-3">
           Academic Basis
         </div>
         <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
@@ -78,7 +78,7 @@ export default function AboutPage() {
             { y: '2015', a: 'Yamakawa et al.', t: 'Rising from the Ashes', j: 'Entrepreneurship Theory and Practice', n: '실패 후 인지적 학습이 후속 벤처의 성장을 결정.' },
           ].map((p, i) => (
             <li key={i} className="border-l-2 border-ink-900/20 pl-6 pb-6">
-              <div className="font-mono text-xs text-terra-600 tracking-widest mb-1">
+              <div className="font-mono text-xs text-navy-800 tracking-widest mb-1">
                 {p.y} · {p.a}
               </div>
               <div className="serif-display text-lg font-bold mb-1">{p.t}</div>
@@ -91,7 +91,7 @@ export default function AboutPage() {
 
       {/* Tech */}
       <section className="mb-16">
-        <div className="text-xs tracking-[0.3em] text-terra-600 uppercase font-mono mb-3">
+        <div className="text-xs tracking-[0.3em] text-navy-800 uppercase font-mono mb-3">
           Technology
         </div>
         <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
@@ -104,7 +104,7 @@ export default function AboutPage() {
             { t: '클라우드', d: 'Netlify + Supabase 기반 Serverless 자동 확장 인프라' },
             { t: '자동화', d: '품질 점수 기반 수수료·가격 동적 산출 시스템' },
           ].map((it, i) => (
-            <div key={i} className="bg-paper-50 p-6">
+            <div key={i} className="bg-white p-6">
               <div className="serif-display text-xl font-bold mb-2">{it.t}</div>
               <div className="text-sm text-ink-700 leading-relaxed">{it.d}</div>
             </div>
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
       {/* Tagline */}
       <section className="text-center py-16 border-t border-ink-900/10">
-        <p className="serif-display text-3xl md:text-4xl italic text-terra-600 leading-relaxed">
+        <p className="serif-display text-3xl md:text-4xl italic text-navy-800 leading-relaxed">
           실패가 자산이 되는 세상을 만듭니다.
         </p>
       </section>
@@ -124,7 +124,7 @@ export default function AboutPage() {
 
 function Stat({ n, l, s }) {
   return (
-    <div className="bg-paper-50 p-6">
+    <div className="bg-white p-6">
       <div className="serif-display text-4xl font-black tabular-nums tracking-tightest mb-1">
         {n}
       </div>
