@@ -148,7 +148,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA - 배경색을 없애고 문구를 더 프로페셔널하게 다듬은 버전 */}
+     {/* CTA - 배경색을 없애고 문구를 더 프로페셔널하게 다듬은 버전 */}
 <section className="py-20 mt-12 text-ink-900 px-6">
   <div className="max-w-3xl mx-auto"> {/* 중앙 정렬을 위해 mx-auto 추가 */}
     <div className="text-xs tracking-[0.3em] text-navy-600 uppercase mb-4 font-mono">
@@ -177,7 +177,9 @@ export default function HomePage() {
     </div>
   </div>
 </section>
-
+</div>
+)
+}
 function Stat({ number, label, sub, highlight = false }) {
   return (
     <div className={`p-6 ${highlight ? 'bg-navy-700 text-white' : 'bg-white'}`}>
