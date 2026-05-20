@@ -19,11 +19,10 @@ export default function HomePage() {
             <div className="text-xs tracking-[0.3em] text-navy-800 uppercase mb-6 font-mono">
               Vol. 01 — 시행착오 자산화 플랫폼
             </div>
-            <h1 className="serif-display text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-tightest text-ink-900 mb-8">
-              성공 확률을 높이는<br/>
-              <span className="italic text-navy-800">리스크</span>관리,<br/>
-              실패 리포트에서 답을 찾으세요.
-            </h1>
+       <h1 className="serif-display text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-tightest text-ink-900 mb-8">
+  리스크 관리의 해답,<br/>
+  <span className="text-navy-800">실패 리포트</span>에 있습니다.
+</h1>
             <p className="text-lg text-ink-700 leading-relaxed max-w-xl mb-10">
               FailBank는 소규모 사업자의 실패 경험을 5단계로 구조화하여 거래하는
               국내 최초의 마켓플레이스입니다. 평균 5,000~30,000원으로
