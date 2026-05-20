@@ -20,9 +20,9 @@ export default function HomePage() {
               Vol. 01 — 시행착오 자산화 플랫폼
             </div>
             <h1 className="serif-display text-5xl sm:text-6xl md:text-7xl font-black leading-[0.95] tracking-tightest text-ink-900 mb-8">
-              먼저 망해본 사람의<br/>
-              <span className="italic text-navy-800">리포트</span>로<br/>
-              시행착오를 줄이세요.
+              성공 확률을 높이는<br/>
+              <span className="italic text-navy-800">리스크</span>관리,<br/>
+              실패 리포트에서 답을 찾으세요.
             </h1>
             <p className="text-lg text-ink-700 leading-relaxed max-w-xl mb-10">
               FailBank는 소규모 사업자의 실패 경험을 5단계로 구조화하여 거래하는
@@ -148,38 +148,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20 mt-12 bg-ink-900 text-white -mx-6 px-6 sm:rounded-sm">
-        <div className="max-w-3xl">
-          <div className="text-xs tracking-[0.3em] text-navy-600 uppercase mb-4 font-mono">
-            Join FailBank
-          </div>
-          <h2 className="serif-display text-4xl sm:text-5xl font-black tracking-tightest mb-6 leading-tight">
-            당신의 실패가<br/>누군가의 <span className="italic text-navy-600">생존</span>이 됩니다.
-          </h2>
-          <p className="text-ink-200 mb-8 leading-relaxed">
-            폐업 경험을 5단계로 정리하고 AI 자동 평가를 받아보세요.
-            첫 100명 판매자는 수수료 0% — 정산 100% 받습니다.
-          </p>
-          <div className="flex flex-wrap gap-4">
-            <Link
-              to="/sell"
-              className="inline-block bg-navy-700 text-white px-8 py-4 font-medium tracking-tight hover:bg-navy-600 transition-colors"
-            >
-              판매자 혜택 보기 →
-            </Link>
-            <Link
-              to="/submit"
-              className="inline-block bg-transparent text-white border border-ink-200 px-8 py-4 font-medium tracking-tight hover:bg-white hover:text-ink-900 transition-colors"
-            >
-              바로 작성하기
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* CTA - 배경색을 없애고 문구를 더 프로페셔널하게 다듬은 버전 */}
+<section className="py-20 mt-12 text-ink-900 px-6">
+  <div className="max-w-3xl mx-auto"> {/* 중앙 정렬을 위해 mx-auto 추가 */}
+    <div className="text-xs tracking-[0.3em] text-navy-600 uppercase mb-4 font-mono">
+      Join FailBank
     </div>
-  )
-}
+    <h2 className="serif-display text-4xl sm:text-5xl font-black tracking-tightest mb-6 leading-tight">
+      당신의 시행착오가<br/>누군가의 가장 확실한 <span className="text-navy-600">성공 전략</span>이 됩니다.
+    </h2>
+    <p className="text-ink-700 mb-8 leading-relaxed"> {/* 배경이 밝아져서 글자색을 어둡게 변경 */}
+      과거의 위기 극복 경험을 정형화된 데이터 리포트로 자산화하세요.<br />
+      초기 100명의 파트너에게는 플랫폼 수수료 0% — 정산 100% 혜택을 전액 보장합니다.
+    </p>
+    <div className="flex flex-wrap gap-4">
+      <Link
+        to="/sell"
+        className="inline-block bg-navy-700 text-white px-8 py-4 font-medium tracking-tight hover:bg-navy-600 transition-colors"
+      >
+        판매자 혜택 보기 →
+      </Link>
+      <Link
+        to="/submit"
+        className="inline-block bg-transparent text-ink-900 border border-ink-400 px-8 py-4 font-medium tracking-tight hover:bg-ink-100 transition-colors"
+      > {/* 밝은 배경에 맞게 버튼 스타일 수정 */}
+        바로 작성하기
+      </Link>
+    </div>
+  </div>
+</section>
 
 function Stat({ number, label, sub, highlight = false }) {
   return (

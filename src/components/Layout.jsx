@@ -55,7 +55,7 @@ export default function Layout({ children }) {
             <div>
               <div className="serif-display text-lg font-bold mb-2">FailBank</div>
               <p className="text-sm text-ink-500 leading-relaxed">
-                먼저 망해본 사람의 리포트로<br/>시행착오를 줄이세요.
+                성공 확률을 높이는 리스크 관리,<br/>실패 리포트에서 답을 찾으세요.
               </p>
             </div>
             <div>
