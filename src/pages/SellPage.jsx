@@ -54,28 +54,37 @@ export default function SellPage() {
           </div>
         </section>
 
-        {/* 부트스트랩 캠페인 */}
-        <section className="mb-20 -mx-6 px-6 py-16 bg-ink-900">
-          <div className="max-w-4xl">
-            <div className="text-[9px] tracking-[0.4em] text-paper-400 uppercase font-mono mb-4">Bootstrap Campaign · 초기 부트스트랩</div>
-            <h2 className="text-5xl font-black tracking-tightest mb-6 leading-tight text-paper-50">
-              처음 100명, 수수료 <span className="italic text-gold-400">0%</span>.
-            </h2>
-            <p className="text-paper-400 text-lg leading-relaxed mb-10 max-w-2xl">
-              양면 플랫폼은 초기 공급자가 가장 어렵습니다 (Rochet & Tirole, 2003).
-              그래서 첫 100명 판매자에게 <strong className="text-paper-100">수수료를 받지 않습니다.</strong>
-              대신 정부 재도전 지원사업·폐업 사업자 커뮤니티와 제휴해 모집합니다.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-px bg-ink-700">
-              <BootstrapStat n="0%" l="첫 100명 수수료" />
-              <BootstrapStat n="3개월" l="캠페인 기간" />
-              <BootstrapStat n="100%" l="판매자 정산" />
-            </div>
-            <p className="text-paper-600 text-sm mt-6 italic">
-              * 캠페인 종료 후에도 기본 정산률 80%, 품질 90점 이상 85%는 유지됩니다.
-            </p>
-          </div>
-        </section>
+{/* 부트스트랩 캠페인 */}
+<section className="mb-20 -mx-6 px-6 py-16 bg-offwhite"> {/* 배경색을 오프화이트(예: bg-slate-50 또는 bg-[#faf9f6] 등 기존 테마 컬러)로 변경 */}
+  <div className="max-w-4xl">
+    {/* text-paper-400(밝은색) -> text-ink-500(어두운 회색/네이비) */}
+    <div className="text-[9px] tracking-[0.4em] text-ink-500 uppercase font-mono mb-4">Bootstrap Campaign · 초기 부트스트랩</div>
+    
+    {/* text-paper-50(흰색에 가까움) -> text-ink-900(깊은 흑색/네이비) */}
+    <h2 className="text-5xl font-black tracking-tightest mb-6 leading-tight text-ink-900">
+      처음 100명, 수수료 <span className="italic text-gold-600">0%</span>. {/* 황금색도 밝은 배경에선 조금 더 진한 600~700 톤이 좋습니다 */}
+    </h2>
+    
+    {/* text-paper-400 -> text-ink-700 */}
+    <p className="text-ink-700 text-lg leading-relaxed mb-10 max-w-2xl">
+      양면 플랫폼은 초기 공급자가 가장 어렵습니다 (Rochet & Tirole, 2003).<br />
+      그래서 첫 100명 판매자에게 <strong className="text-ink-900">수수료를 받지 않습니다.</strong><br />
+      대신 정부 재도전 지원사업·폐업 사업자 커뮤니티와 제휴해 모집합니다.
+    </p>
+    
+    {/* bg-ink-700(어두운 구분선) -> bg-ink-200(밝은 회색 구분선) */}
+    <div className="grid sm:grid-cols-3 gap-px bg-ink-200">
+      <BootstrapStat n="0%" l="첫 100명 수수료" />
+      <BootstrapStat n="3개월" l="캠페인 기간" />
+      <BootstrapStat n="100%" l="판매자 정산" />
+    </div>
+    
+    {/* text-paper-600 -> text-ink-500 */}
+    <p className="text-ink-500 text-sm mt-6 italic">
+      * 캠페인 종료 후에도 기본 정산률 80%, 품질 90점 이상 85%는 유지됩니다.
+    </p>
+  </div>
+</section>
 
         {/* 정산 계산기 */}
         <section className="mb-20">
