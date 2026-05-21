@@ -67,7 +67,6 @@ export default function SellPage() {
               대신 정부 재도전 지원사업·폐업 사업자 커뮤니티와 제휴해 모집합니다.
             </p>
             
-            {/* 하단 스탯 카드를 감싸는 그리드 경계선 색상 변경 */}
             <div className="grid sm:grid-cols-3 gap-px bg-paper-200">
               <BootstrapStat n="0%" l="첫 100명 수수료" />
               <BootstrapStat n="3개월" l="캠페인 기간" />
@@ -209,12 +208,12 @@ function MotiveCard({ n, title, subtitle, body, highlight = false }) {
   )
 }
 
-{/* ★ 가독성 개선 및 오류 수정한 하단 스탯 컴포넌트 ★ */}
+// 하단 스탯 컴포넌트 (가독성 개선 반영)
 function BootstrapStat({ n, l }) {
   return (
-    <div className="bg-white p-6"> {/* 어두운 배경(bg-ink-800)에서 밝은 배경(bg-white)으로 변경 */}
-      <div className="text-4xl font-black tabular-nums tracking-tightest text-ink-900">{n}</div> {/* 텍스트를 어두운 색상으로 변경 */}
-      <div className="text-xs text-ink-500 mt-1">{l}</div> {/* 라벨 텍스트 색상 가독성 확보 */}
+    <div className="bg-white p-6">
+      <div className="text-4xl font-black tabular-nums tracking-tightest text-ink-900">{n}</div>
+      <div className="text-xs text-ink-500 mt-1">{l}</div>
     </div>
   )
 }
