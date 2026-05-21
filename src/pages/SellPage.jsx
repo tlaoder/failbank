@@ -257,4 +257,3 @@ function VerifyTier({ level, badge, badgeColor, description, tradeoff }) {
     </div>
   )
 }
-}
