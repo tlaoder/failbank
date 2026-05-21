@@ -6,40 +6,43 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #080808;
+    background-color: #f8f6f1;
   }
   body {
-    @apply bg-void-900 text-cream-900 font-sans;
+    @apply bg-paper-50 text-ink-900 font-sans;
     min-height: 100vh;
   }
 }
 
 @layer components {
   .paper-card {
-    @apply bg-void-700 border border-void-400/50 rounded-none;
+    @apply bg-white border border-paper-200 rounded-none;
     transition: border-color 0.2s ease;
   }
   .paper-card:hover {
-    @apply border-gold-500/60;
+    @apply border-gold-400;
   }
   .btn-primary {
-    @apply bg-gold-500 text-void-900 px-6 py-3 font-semibold tracking-tight rounded-none
-           hover:bg-gold-400 transition-colors duration-200
-           disabled:opacity-30 disabled:cursor-not-allowed;
+    @apply bg-ink-900 text-paper-50 px-6 py-3 font-semibold tracking-tight rounded-none
+           hover:bg-ink-700 transition-colors duration-200
+           disabled:opacity-40 disabled:cursor-not-allowed;
   }
   .btn-secondary {
-    @apply bg-transparent text-cream-900 border border-void-300 px-6 py-3 font-medium tracking-tight rounded-none
-           hover:border-cream-600 hover:bg-void-700 transition-colors duration-200;
+    @apply bg-transparent text-ink-900 border border-paper-300 px-6 py-3 font-medium tracking-tight rounded-none
+           hover:border-ink-900 hover:bg-paper-100 transition-colors duration-200;
   }
   .input-field {
-    @apply w-full bg-void-800 border border-void-400 rounded-none px-4 py-3 text-cream-900
-           focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 focus:outline-none transition-all
-           placeholder:text-void-200;
+    @apply w-full bg-white border border-paper-300 rounded-none px-4 py-3 text-ink-900
+           focus:border-gold-400 focus:ring-1 focus:ring-gold-400/30 focus:outline-none transition-all
+           placeholder:text-paper-400;
   }
   .textarea-field {
-    @apply w-full bg-void-800 border border-void-400 rounded-none p-4 text-cream-900
-           focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 focus:outline-none transition-all
-           placeholder:text-void-200 resize-none;
+    @apply w-full bg-white border border-paper-300 rounded-none p-4 text-ink-900
+           focus:border-gold-400 focus:ring-1 focus:ring-gold-400/30 focus:outline-none transition-all
+           placeholder:text-paper-400 resize-none;
+  }
+  select.input-field {
+    @apply bg-white text-ink-900;
   }
 }
 
@@ -50,27 +53,6 @@
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-up {
-  animation: fadeUp 0.5s ease-out forwards;
-}
-
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-.gold-shimmer {
-  background: linear-gradient(90deg, #c9a84c 0%, #f0e4c0 50%, #c9a84c 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: shimmer 4s linear infinite;
 }
 
 .grade-stamp {
@@ -88,13 +70,21 @@
 
 .divider-gold {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c9a84c55, transparent);
+  background: linear-gradient(90deg, transparent, #c9a84c66, transparent);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fadeUp 0.45s ease-out forwards;
 }
 
 ::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #080808; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #c9a84c55; }
+::-webkit-scrollbar-track { background: #f8f6f1; }
+::-webkit-scrollbar-thumb { background: #d4d0c8; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c9a84c88; }
 
 :focus-visible {
   outline: 2px solid #c9a84c;

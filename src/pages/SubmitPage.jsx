@@ -40,51 +40,46 @@ export default function SubmitPage() {
   }
 
   return (
-    <div className="bg-void-900 min-h-screen">
+    <div className="bg-paper-50 min-h-screen">
       <div className="max-w-6xl mx-auto px-6 py-16">
-
-        {/* Header */}
-        <div className="border-b border-void-500/30 pb-12 mb-12">
-          <div className="text-[9px] tracking-[0.4em] text-gold-400 uppercase mb-4 font-mono">New Report</div>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tightest mb-4 text-cream-900">시행착오 리포트 작성</h1>
-          <p className="text-cream-600">5단계 구조화 템플릿에 따라 작성하세요. AI가 실시간으로 품질을 평가하고 가격을 추천합니다.</p>
+        <div className="border-b border-paper-300 pb-12 mb-12">
+          <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase mb-4 font-mono">New Report</div>
+          <h1 className="text-5xl font-black tracking-tightest mb-4 text-ink-900">시행착오 리포트 작성</h1>
+          <p className="text-ink-500">5단계 구조화 템플릿에 따라 작성하세요. AI가 실시간으로 품질을 평가하고 가격을 추천합니다.</p>
         </div>
 
         <div className="grid lg:grid-cols-12 gap-12">
-          {/* Form */}
           <div className="lg:col-span-8 space-y-10">
-            {/* Meta */}
             <section className="space-y-6">
               <div>
-                <label htmlFor="report-title" className="text-[9px] tracking-[0.3em] text-void-100 uppercase font-mono mb-3 block">제목</label>
+                <label htmlFor="report-title" className="text-[9px] tracking-[0.3em] text-paper-500 uppercase font-mono mb-3 block">제목</label>
                 <input id="report-title" type="text" value={meta.title} onChange={e => setMeta({ ...meta, title: e.target.value })} placeholder="예: 인스타 광고 3,000만원 태우고 폐업한 디저트 카페" className="input-field text-lg font-bold" maxLength={80} />
-                <p className="text-xs text-void-100 mt-1 font-mono">{meta.title.length}/80</p>
+                <p className="text-xs text-paper-400 mt-1 font-mono">{meta.title.length}/80</p>
               </div>
               <div className="grid sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="report-category" className="text-[9px] tracking-[0.3em] text-void-100 uppercase font-mono mb-3 block">카테고리</label>
+                  <label htmlFor="report-category" className="text-[9px] tracking-[0.3em] text-paper-500 uppercase font-mono mb-3 block">카테고리</label>
                   <select id="report-category" value={meta.category} onChange={e => setMeta({ ...meta, category: e.target.value })} className="input-field">
                     {CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label htmlFor="seller-nickname" className="text-[9px] tracking-[0.3em] text-void-100 uppercase font-mono mb-3 block">닉네임 (익명 가능)</label>
+                  <label htmlFor="seller-nickname" className="text-[9px] tracking-[0.3em] text-paper-500 uppercase font-mono mb-3 block">닉네임 (익명 가능)</label>
                   <input id="seller-nickname" type="text" value={meta.seller_nickname} onChange={e => setMeta({ ...meta, seller_nickname: e.target.value })} placeholder="예: 강남디저트" className="input-field" maxLength={20} />
                 </div>
               </div>
             </section>
 
-            {/* Step nav */}
-            <nav aria-label="작성 단계" className="flex gap-px bg-void-500/20 sticky top-20 z-20">
+            <nav aria-label="작성 단계" className="flex gap-px bg-paper-200 sticky top-20 z-20">
               {STEPS.map((s, i) => {
                 const filled = content[s.key].trim().length >= s.min
                 const isCurrent = activeStep === i
                 return (
                   <button key={s.key} onClick={() => setActiveStep(i)} aria-current={isCurrent ? 'step' : undefined}
                     className={`flex-1 py-3 text-xs font-mono uppercase tracking-wider transition-colors border-b-2 ${
-                      isCurrent ? 'border-gold-500 text-gold-400 bg-void-800' :
-                      filled ? 'border-gold-500/30 text-void-50 bg-void-900' :
-                      'border-void-500/30 text-void-100 bg-void-900'
+                      isCurrent ? 'border-gold-500 text-gold-600 bg-white' :
+                      filled ? 'border-gold-300 text-ink-600 bg-white' :
+                      'border-transparent text-paper-500 bg-white'
                     }`}>
                     <div className="text-[9px] opacity-60">{s.n}</div>
                     <div className="hidden sm:block text-[10px]">{s.title.split(' ')[0]}</div>
@@ -93,71 +88,59 @@ export default function SubmitPage() {
               })}
             </nav>
 
-            {/* Step content */}
             {STEPS.map((s, i) => (
               <section key={s.key} className={i === activeStep ? '' : 'hidden'} aria-hidden={i !== activeStep}>
                 <div className="flex items-baseline gap-3 mb-2">
-                  <span className="font-mono text-[9px] text-gold-400 tracking-widest">STEP {s.n}</span>
-                  <h2 className="text-2xl font-bold text-cream-900">{s.title}</h2>
+                  <span className="font-mono text-[9px] text-gold-500 tracking-widest">STEP {s.n}</span>
+                  <h2 className="text-2xl font-bold text-ink-900">{s.title}</h2>
                 </div>
-                <p className="text-sm text-void-50 mb-5 leading-relaxed" id={`desc-${s.key}`}>{s.desc}</p>
-                <textarea
-                  value={content[s.key]}
-                  onChange={e => setContent({ ...content, [s.key]: e.target.value })}
-                  placeholder={s.placeholder}
-                  rows={10}
-                  className="textarea-field text-[15px] leading-[1.9]"
-                  maxLength={3000}
-                  aria-describedby={`desc-${s.key}`}
-                />
+                <p className="text-sm text-ink-500 mb-5 leading-relaxed">{s.desc}</p>
+                <textarea value={content[s.key]} onChange={e => setContent({ ...content, [s.key]: e.target.value })} placeholder={s.placeholder} rows={10} className="textarea-field text-[15px] leading-[1.9]" maxLength={3000} />
                 <div className="flex items-center justify-between mt-2 text-xs font-mono">
-                  <span className={content[s.key].length >= s.min ? 'text-gold-400/70' : 'text-void-100'}>
+                  <span className={content[s.key].length >= s.min ? 'text-ink-600' : 'text-paper-400'}>
                     {content[s.key].length} / 3,000 {content[s.key].length < s.min && `(최소 ${s.min}자)`}
                   </span>
                   <div className="flex gap-4">
-                    {i > 0 && <button onClick={() => setActiveStep(i - 1)} className="text-void-50 hover:text-cream-900">← 이전</button>}
-                    {i < STEPS.length - 1 && <button onClick={() => setActiveStep(i + 1)} className="text-gold-400 hover:text-gold-300">다음 →</button>}
+                    {i > 0 && <button onClick={() => setActiveStep(i - 1)} className="text-ink-500 hover:text-ink-900">← 이전</button>}
+                    {i < STEPS.length - 1 && <button onClick={() => setActiveStep(i + 1)} className="text-gold-500 hover:text-gold-600">다음 →</button>}
                   </div>
                 </div>
               </section>
             ))}
 
-            {submitError && <div role="alert" className="p-4 bg-red-500/10 border border-red-500/30 text-sm text-red-400">{submitError}</div>}
+            {submitError && <div role="alert" className="p-4 bg-red-50 border border-red-200 text-sm text-red-700">{submitError}</div>}
 
-            <div className="border-t border-void-500/30 pt-8 flex flex-wrap gap-4 items-center">
+            <div className="border-t border-paper-300 pt-8 flex flex-wrap gap-4 items-center">
               <button onClick={handleSubmit} disabled={!canSubmit || submitting} className="btn-primary px-10 py-4" aria-busy={submitting}>
                 {submitting ? <span role="status">등록 중...</span> : '리포트 등록하기'}
               </button>
-              {!canSubmit && <p className="text-xs text-void-100 font-mono">모든 단계를 50자 이상 작성해야 등록 가능합니다.</p>}
+              {!canSubmit && <p className="text-xs text-paper-400 font-mono">모든 단계를 50자 이상 작성해야 등록 가능합니다.</p>}
             </div>
           </div>
 
-          {/* Sidebar */}
           <aside aria-label="AI 실시간 품질 평가" className="lg:col-span-4">
-            <div className="sticky top-24 border border-void-500/30 bg-void-800 p-8">
-              <div className="text-[9px] tracking-[0.3em] text-gold-400 uppercase font-mono mb-6">AI 실시간 평가</div>
+            <div className="sticky top-24 border border-paper-200 bg-white p-8">
+              <div className="text-[9px] tracking-[0.3em] text-gold-500 uppercase font-mono mb-6">AI 실시간 평가</div>
 
-              <div className="flex items-center justify-between mb-8 pb-8 border-b border-void-500/30">
+              <div className="flex items-center justify-between mb-8 pb-8 border-b border-paper-200">
                 <div>
-                  <div className="text-6xl font-black tabular-nums text-cream-900" aria-label={`현재 점수 ${evaluation.total}점`}>
-                    {evaluation.total}
-                  </div>
-                  <div className="text-xs text-void-100 font-mono">/ 100점</div>
+                  <div className="text-6xl font-black tabular-nums text-ink-900">{evaluation.total}</div>
+                  <div className="text-xs text-paper-400 font-mono">/ 100점</div>
                 </div>
-                <div className={`grade-stamp text-2xl ${evaluation.grade === 'S' ? 'text-gold-400 border-gold-500/50' : 'text-cream-600 border-void-300'}`}>
+                <div className={`grade-stamp ${evaluation.grade === 'S' ? 'text-gold-500' : 'text-ink-400'}`}>
                   {evaluation.grade}
                 </div>
               </div>
 
-              <div className="space-y-4 mb-8 pb-8 border-b border-void-500/30">
+              <div className="space-y-4 mb-8 pb-8 border-b border-paper-200">
                 {Object.values(evaluation.breakdown).map(b => (
                   <div key={b.label}>
                     <div className="flex justify-between text-xs mb-2">
-                      <span className="text-cream-700">{b.label}</span>
-                      <span className="font-mono text-void-100">{b.score} / {b.max}</span>
+                      <span className="text-ink-700">{b.label}</span>
+                      <span className="font-mono text-paper-500">{b.score} / {b.max}</span>
                     </div>
-                    <div className="h-0.5 bg-void-600" role="progressbar" aria-valuenow={b.score} aria-valuemin={0} aria-valuemax={b.max}>
-                      <div className="h-full bg-gold-500 transition-all duration-500" style={{ width: `${(b.score / b.max) * 100}%` }} />
+                    <div className="h-1 bg-paper-200" role="progressbar" aria-valuenow={b.score} aria-valuemin={0} aria-valuemax={b.max}>
+                      <div className="h-full bg-gold-400 transition-all duration-500" style={{ width: `${(b.score / b.max) * 100}%` }} />
                     </div>
                   </div>
                 ))}
@@ -165,19 +148,19 @@ export default function SubmitPage() {
 
               <div className="space-y-3">
                 <div className="flex justify-between items-baseline">
-                  <span className="text-[9px] text-void-100 tracking-[0.3em] uppercase font-mono">추천 가격</span>
-                  <span className="text-2xl font-bold text-gold-400 tabular-nums">
-                    {evaluation.recommendedPrice.toLocaleString()}<span className="text-sm text-void-100">원</span>
+                  <span className="text-[9px] text-paper-400 tracking-[0.3em] uppercase font-mono">추천 가격</span>
+                  <span className="text-2xl font-bold text-ink-900 tabular-nums">
+                    {evaluation.recommendedPrice.toLocaleString()}<span className="text-sm text-paper-400 ml-1">원</span>
                   </span>
                 </div>
-                <div className="flex justify-between text-xs text-void-100 font-mono">
+                <div className="flex justify-between text-xs text-paper-400 font-mono">
                   <span>수수료 {(evaluation.commissionRate * 100).toFixed(0)}%</span>
                   <span>→ 정산 {evaluation.sellerEarning.toLocaleString()}원</span>
                 </div>
               </div>
 
               {evaluation.total < 60 && (
-                <div role="alert" className="mt-6 p-4 border-l-2 border-gold-500 bg-gold-500/5 text-xs text-cream-700 leading-relaxed">
+                <div role="alert" className="mt-6 p-4 border-l-2 border-gold-400 bg-gold-100 text-xs text-ink-700 leading-relaxed">
                   점수가 낮습니다. 정량적 데이터(금액·기간·수치)와 구체적인 행동 가능한 교훈을 추가해보세요.
                 </div>
               )}
