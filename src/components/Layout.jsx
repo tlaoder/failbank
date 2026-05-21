@@ -11,10 +11,8 @@ export default function Layout({ children }) {
       <Link
         to={to}
         aria-current={active ? 'page' : undefined}
-        className={`text-sm tracking-tight transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-700 rounded-sm px-1 py-0.5 ${
-          active
-            ? 'text-navy-800 font-medium'
-            : 'text-ink-700 hover:text-ink-900'
+        className={`text-sm tracking-widest uppercase transition-colors font-mono ${
+          active ? 'text-gold-400' : 'text-void-50 hover:text-cream-900'
         }`}
       >
         {label}
@@ -23,41 +21,24 @@ export default function Layout({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Skip to main content — 접근성 */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-navy-800 focus:text-white focus:px-4 focus:py-2 focus:rounded-md focus:text-sm focus:font-medium"
-      >
+    <div className="min-h-screen flex flex-col bg-void-900">
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-gold-500 focus:text-void-900 focus:px-4 focus:py-2 focus:text-sm">
         본문으로 바로가기
       </a>
 
-      <header
-        role="banner"
-        className="border-b border-ink-900/10 bg-white/95 backdrop-blur-sm sticky top-0 z-40"
-      >
-        <div className="max-w-6xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link
-            to="/"
-            aria-label="FailBank 홈으로 이동"
-            className="flex items-baseline gap-3 group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-navy-700 rounded-sm"
-          >
-            <span className="serif-display text-2xl font-black tracking-tightest text-ink-900">
-              Fail<span className="text-navy-800">Bank</span>
+      <header role="banner" className="border-b border-void-500/40 bg-void-900/95 backdrop-blur-sm sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+          <Link to="/" aria-label="FailBank 홈으로 이동" className="flex items-baseline gap-3">
+            <span className="text-2xl font-black tracking-tightest text-cream-900">
+              Fail<span className="text-gold-400">Bank</span>
             </span>
-            <span
-              className="text-[10px] tracking-[0.2em] text-ink-500 uppercase hidden sm:inline"
-              aria-hidden="true"
-            >
-              EST. 2026
-            </span>
+            <span className="text-[9px] tracking-[0.3em] text-void-100 uppercase hidden sm:inline font-mono">EST. 2026</span>
           </Link>
-
-          <nav role="navigation" aria-label="주요 메뉴" className="flex items-center gap-6 sm:gap-8">
-            {navLink('/browse', '리포트 찾기')}
-            {navLink('/submit', '리포트 쓰기')}
-            {navLink('/sell', '판매자 안내')}
-            {navLink('/about', '소개')}
+          <nav role="navigation" aria-label="주요 메뉴" className="flex items-center gap-8">
+            {navLink('/browse', 'Browse')}
+            {navLink('/submit', 'Submit')}
+            {navLink('/sell', 'Sell')}
+            {navLink('/about', 'About')}
           </nav>
         </div>
       </header>
@@ -66,44 +47,36 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      <footer
-        role="contentinfo"
-        className="border-t border-ink-900/10 mt-24 py-12 px-6"
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-8">
+      <footer role="contentinfo" className="border-t border-void-500/40 mt-24 py-16 px-6 bg-void-800">
+        <div className="max-w-7xl mx-auto">
+          <div className="divider-gold mb-12" />
+          <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div>
-              <div className="serif-display text-lg font-bold mb-2" aria-label="FailBank">
-                FailBank
+              <div className="text-xl font-black tracking-tightest mb-3 text-cream-900">
+                Fail<span className="text-gold-400">Bank</span>
               </div>
-              <p className="text-sm text-ink-500 leading-relaxed">
-                먼저 망해본 사람의 리포트로<br />시행착오를 줄이세요.
-              </p>
+              <p className="text-sm text-void-50 leading-relaxed">먼저 망해본 사람의 리포트로<br />시행착오를 줄이세요.</p>
             </div>
             <div>
-              <div className="text-xs tracking-[0.2em] text-ink-500 uppercase mb-3 font-mono">
-                Data
-              </div>
-              <ul className="space-y-1.5 text-sm text-ink-700" aria-label="주요 통계">
+              <div className="text-[9px] tracking-[0.3em] text-void-100 uppercase mb-4 font-mono">Data</div>
+              <ul className="space-y-2 text-sm text-cream-700">
                 <li>창업 5년 생존율 29.2%</li>
                 <li>재창업 5년 생존율 73.3%</li>
                 <li>연간 폐업자 100.8만 명</li>
               </ul>
             </div>
             <div>
-              <div className="text-xs tracking-[0.2em] text-ink-500 uppercase mb-3 font-mono">
-                출처
-              </div>
-              <ul className="space-y-1.5 text-sm text-ink-700" aria-label="데이터 출처">
+              <div className="text-[9px] tracking-[0.3em] text-void-100 uppercase mb-4 font-mono">출처</div>
+              <ul className="space-y-2 text-sm text-cream-700">
                 <li>통계청 기업생멸행정통계</li>
                 <li>국세청 2024 국세통계</li>
                 <li>중소벤처기업부 (2026)</li>
               </ul>
             </div>
           </div>
-          <div className="pt-6 border-t border-ink-900/10 flex flex-col sm:flex-row justify-between gap-2 text-xs text-ink-500">
+          <div className="pt-8 border-t border-void-500/30 flex flex-col sm:flex-row justify-between gap-2 text-xs text-void-100 font-mono">
             <div>© 2026 FailBank. All rights reserved.</div>
-            <div className="font-mono">실패가 자산이 되는 세상.</div>
+            <div>실패가 자산이 되는 세상.</div>
           </div>
         </div>
       </footer>

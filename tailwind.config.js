@@ -6,37 +6,44 @@ export default {
       fontFamily: {
         sans: ['Pretendard', 'system-ui', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'ui-monospace', 'monospace'],
+        display: ['Pretendard', 'system-ui', 'sans-serif'],
       },
       colors: {
-        // Modern neutral palette
-        ink: {
-          900: '#0a0a0a',
-          800: '#171717',
-          700: '#262626',
-          600: '#404040',
-          500: '#737373',
-          400: '#a3a3a3',
-          300: '#d4d4d4',
-          200: '#e5e5e5',
-          100: '#f5f5f5',
-          50: '#fafafa',
+        // 다크 베이스
+        void: {
+          950: '#030303',
+          900: '#080808',
+          800: '#0f0f0f',
+          700: '#161616',
+          600: '#1e1e1e',
+          500: '#282828',
+          400: '#333333',
+          300: '#444444',
+          200: '#666666',
+          100: '#888888',
+          50:  '#aaaaaa',
         },
-        // Dark blue accent
-        navy: {
-          900: '#0c1e3e',
-          800: '#13294b',
-          700: '#1e3a5f',
-          600: '#2b4a73',
-          500: '#3b5d8a',
-          400: '#5577a8',
-          300: '#8aa3c4',
-          200: '#c7d3e2',
-          100: '#e7ecf3',
-          50: '#f5f7fa',
+        // 황금 액센트
+        gold: {
+          500: '#c9a84c',
+          400: '#d4b466',
+          300: '#e2cc8e',
+          200: '#f0e4c0',
+          100: '#f8f2e0',
+        },
+        // 크림 텍스트
+        cream: {
+          900: '#faf8f4',
+          800: '#f5f1ea',
+          700: '#ede7da',
+          600: '#d9d0be',
+          500: '#b8ad98',
+          400: '#9a8e77',
         },
       },
       letterSpacing: {
-        'tightest': '-0.04em',
+        tightest: '-0.04em',
+        widest2: '0.25em',
       },
     },
   },

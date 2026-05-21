@@ -6,46 +6,46 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    background-color: #080808;
   }
   body {
-    @apply bg-white text-ink-900 font-sans;
+    @apply bg-void-900 text-cream-900 font-sans;
     min-height: 100vh;
   }
 }
 
 @layer components {
   .paper-card {
-    @apply bg-white border border-ink-200 rounded-lg;
+    @apply bg-void-700 border border-void-400/50 rounded-none;
     transition: border-color 0.2s ease;
   }
   .paper-card:hover {
-    @apply border-ink-300;
+    @apply border-gold-500/60;
   }
   .btn-primary {
-    @apply bg-navy-800 text-white px-6 py-3 font-medium tracking-tight rounded-md
-           hover:bg-navy-700 transition-colors duration-200
-           disabled:opacity-40 disabled:cursor-not-allowed;
+    @apply bg-gold-500 text-void-900 px-6 py-3 font-semibold tracking-tight rounded-none
+           hover:bg-gold-400 transition-colors duration-200
+           disabled:opacity-30 disabled:cursor-not-allowed;
   }
   .btn-secondary {
-    @apply bg-white text-ink-900 border border-ink-300 px-6 py-3 font-medium tracking-tight rounded-md
-           hover:border-ink-900 hover:bg-ink-50 transition-colors duration-200;
+    @apply bg-transparent text-cream-900 border border-void-300 px-6 py-3 font-medium tracking-tight rounded-none
+           hover:border-cream-600 hover:bg-void-700 transition-colors duration-200;
   }
   .input-field {
-    @apply w-full bg-white border border-ink-200 rounded-md px-4 py-3
-           focus:border-navy-700 focus:ring-2 focus:ring-navy-700/10 focus:outline-none transition-all
-           placeholder:text-ink-400;
+    @apply w-full bg-void-800 border border-void-400 rounded-none px-4 py-3 text-cream-900
+           focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 focus:outline-none transition-all
+           placeholder:text-void-200;
   }
   .textarea-field {
-    @apply w-full bg-white border border-ink-200 rounded-md p-4
-           focus:border-navy-700 focus:ring-2 focus:ring-navy-700/10 focus:outline-none transition-all
-           placeholder:text-ink-400 resize-none;
+    @apply w-full bg-void-800 border border-void-400 rounded-none p-4 text-cream-900
+           focus:border-gold-500 focus:ring-1 focus:ring-gold-500/30 focus:outline-none transition-all
+           placeholder:text-void-200 resize-none;
   }
 }
 
-/* No serif - everything is Pretendard now */
 .serif-display {
   font-family: 'Pretendard', system-ui, sans-serif;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 .tabular-nums {
@@ -53,14 +53,26 @@
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(12px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up {
-  animation: fadeUp 0.4s ease-out forwards;
+  animation: fadeUp 0.5s ease-out forwards;
 }
 
-/* Modern minimalist grade badge */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+.gold-shimmer {
+  background: linear-gradient(90deg, #c9a84c 0%, #f0e4c0 50%, #c9a84c 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+
 .grade-stamp {
   display: inline-flex;
   align-items: center;
@@ -68,8 +80,23 @@
   width: 3rem;
   height: 3rem;
   border: 1.5px solid currentColor;
-  border-radius: 0.375rem;
-  font-weight: 700;
+  border-radius: 0;
+  font-weight: 800;
   font-size: 1.125rem;
   letter-spacing: -0.02em;
+}
+
+.divider-gold {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #c9a84c55, transparent);
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #080808; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: #c9a84c55; }
+
+:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 3px;
 }
