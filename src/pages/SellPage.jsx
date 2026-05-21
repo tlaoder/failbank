@@ -1,92 +1,137 @@
-import React from 'react'
-
 export default function AboutPage() {
   return (
     <div className="bg-paper-50 min-h-screen">
-      <div className="max-w-6xl mx-auto px-6 py-16">
-        
-        {/* 헤더 섹션 */}
-        <header className="border-b border-paper-300 pb-12 mb-16">
-          <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase font-mono mb-4">
-            Our Mission · 플랫폼 소개
-          </div>
-          <h1 className="text-5xl md:text-6xl font-black tracking-tightest leading-[1.05] mb-6 text-ink-900">
-            실패는 쓰지만,<br />
-            <span className="italic text-gold-500">데이터는 달콤합니다.</span>
-          </h1>
-          <p className="text-lg text-ink-500 leading-relaxed max-w-2xl">
-            FailBank는 세상의 모든 부도, 폐업, 프로젝트 중단 경험을 구조화된 자산으로 전환하는 
-            국내 최초의 '실패 데이터 거래소'입니다. 함정을 미리 안다면 다음 도전의 성공률은 비약적으로 상승합니다.
-          </p>
-        </header>
+      <article className="max-w-4xl mx-auto px-6 py-16">
 
-        {/* 미션 및 비전 섹션 */}
-        <section className="grid md:grid-cols-2 gap-12 mb-20">
-          <div>
-            <h2 className="text-2xl font-black tracking-tightest text-ink-900 mb-4"> 왜 실패 데이터인가?</h2>
-            <p className="text-sm text-ink-600 leading-relaxed space-y-4">
-              매년 수많은 창업자가 유사한 이유로 무너집니다. 자금 고갈, 팀원 불화, 시장 검증 실패 등 
-              패인은 통계적으로 정형화되어 있지만, 개별 경험은 파편화된 채 사라집니다. 
-              FailBank는 이 귀중한 오답노트를 양지라 이끌어내어 건강한 창업 생태계를 만듭니다.
-            </p>
-          </div>
-          <div>
-            <h2 className="text-2xl font-black tracking-tightest text-ink-900 mb-4">안전한 익명성 보장</h2>
-            <p className="text-sm text-ink-600 leading-relaxed">
-              경험을 공유하는 과정에서 발생할 수 있는 평판 리스크를 철저히 방어합니다. 
-              판매자는 인적사항을 완전히 숨긴 채 오직 업종, 타임라인, 수치, 교훈만을 정제하여 
-              안전하게 수익을 창출할 수 있습니다.
-            </p>
-          </div>
-        </section>
+      {/* Headline */}
+      <header className="border-b border-paper-300 pb-10 mb-12">
+        <div className="text-xs tracking-[0.3em] text-gold-500 uppercase font-mono mb-4">
+          About
+        </div>
+        <h1 className="serif-display text-5xl md:text-6xl font-black tracking-tightest leading-[1.05] mb-6">
+          실패가 자산이 되는<br/>세상을 만듭니다.
+        </h1>
+        <p className="text-lg text-ink-600 leading-relaxed max-w-2xl">
+          FailBank는 소규모 사업자·1인 창업자의 시행착오 경험을 5단계 구조화 리포트로
+          자산화하여 거래하는 국내 최초의 마켓플레이스입니다.
+        </p>
+      </header>
 
-        {/* 플랫폼 주요 지표 및 통계 섹션 */}
-        <section className="mb-20">
-          <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase mb-3 font-mono">
-            Platform Status
+      {/* The Discovery */}
+      <section className="mb-16">
+        <div className="text-xs tracking-[0.3em] text-gold-500 uppercase font-mono mb-3">
+          The Discovery
+        </div>
+        <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
+          결정적 발견
+        </h2>
+        <div className="border border-paper-200 bg-white p-8 border-l-4 border-gold-500 mb-6">
+          <div className="serif-display text-2xl italic leading-relaxed text-ink-800">
+            “재창업 기업의 5년 생존율 <span className="text-gold-500 font-black not-italic">73.3%</span>
+            {' '}vs 일반 창업 <span className="font-black not-italic">29.2%</span>”
           </div>
-          <h2 className="text-4xl font-black tracking-tightest mb-10 text-ink-900">
-            데이터로 입증하는 가치
-          </h2>
-          
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-paper-200">
-            <Stat 
-              n="1,240+" 
-              l="등록된 누적 리포트" 
-              s="다양한 업종의 실제 폐업 및 중단 사례가 엄격한 심사를 거쳐 등록되었습니다." 
-            />
-            <Stat 
-              n="84.2%" 
-              l="유료 구매자 만족도" 
-              s="리포트를 구매한 예비 창업자 및 VC 심사역들이 평가한 주관적 유용성 지표입니다." 
-            />
-            <Stat 
-              n="4,200 만원" 
-              l="최대 판매자 누적 정산액" 
-              s="양질의 연쇄 실패 리포트와 1:1 프리미엄 상담을 통해 최고 수익을 올린 판매자의 정산 가치입니다." 
-            />
-            <Stat 
-              n="0 건" 
-              l="신원 노출 보안 사고" 
-              s="철저한 데이터 비식별화 아키텍처를 도입하여 단 한 건의 개인정보 유출도 허용하지 않았습니다." 
-            />
+          <div className="text-xs text-paper-500 mt-4 font-mono">
+            — 통계청 기업생멸행정통계 · 중소벤처기업연구원
           </div>
-        </section>
+        </div>
+        <p className="text-ink-600 leading-[1.85] text-[17px]">
+          한 번 실패한 경험을 가진 창업자가 다시 창업할 경우, 첫 창업자 대비 2.5배 높은 생존율을 보입니다.
+          즉, “실패 경험” 그 자체가 가장 강력한 학습 자산이라는 것을 정부 통계가 직접 입증합니다.
+        </p>
+        <p className="text-ink-600 leading-[1.85] text-[17px] mt-4">
+          그렇다면 자연스러운 질문이 제기됩니다 —
+          <span className="serif-display italic text-gold-500">
+            {' '}“내가 직접 실패하지 않고도, 다른 사람의 실패 경험을 구매하여 학습할 수 있다면?”
+          </span>
+          {' '}이 질문에 답하는 플랫폼이 FailBank입니다.
+        </p>
+      </section>
 
-      </div>
-    </div>
+      {/* Why now */}
+      <section className="mb-16">
+        <div className="text-xs tracking-[0.3em] text-gold-500 uppercase font-mono mb-3">
+          Why now
+        </div>
+        <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
+          한국 창업 시장의 구조적 위기
+        </h2>
+        <div className="grid sm:grid-cols-3 gap-px bg-ink-900/10">
+          <Stat n="29.2%" l="창업 5년 생존율" s="OECD 28개국 중 26위" />
+          <Stat n="100.8만" l="2024 폐업자" s="사상 첫 100만 돌파 (국세청)" />
+          <Stat n="1.3회" l="평균 창업 횟수" s="미·중 2.8회 대비 절반" />
+        </div>
+      </section>
+
+      {/* Academic */}
+      <section className="mb-16">
+        <div className="text-xs tracking-[0.3em] text-gold-500 uppercase font-mono mb-3">
+          Academic Basis
+        </div>
+        <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
+          학술적 근거
+        </h2>
+        <ul className="space-y-6">
+          {[
+            { y: '2011', a: 'Cope, J.', t: 'Entrepreneurial Learning from Failure', j: 'Journal of Business Venturing', n: '실패는 기업가에게 가장 풍부한 학습 경험을 제공한다 (피인용 2,000회+).' },
+            { y: '2020', a: 'Diáz-García et al.', t: 'Lessons from Entrepreneurial Failure through Vicarious Learning', j: 'Journal of Small Business & Entrepreneurship', n: '대리 학습(Vicarious Learning) 효과를 실증. 타인의 실패만 분석해도 학습 가능.' },
+            { y: '2020', a: 'Funken et al.', t: 'Entrepreneurial Learning from Failure: A Systematic Review', j: 'Int. J. of Entrepreneurial Behavior & Research', n: '실패 학습은 구조화된 회고가 있을 때 가장 효과적.' },
+            { y: '2003', a: 'Rochet & Tirole', t: 'Platform Competition in Two-Sided Markets', j: 'Journal of the European Economic Association', n: '양면 시장 이론 (Tirole은 2014 노벨경제학상 수상자).' },
+            { y: '2015', a: 'Yamakawa et al.', t: 'Rising from the Ashes', j: 'Entrepreneurship Theory and Practice', n: '실패 후 인지적 학습이 후속 벤처의 성장을 결정.' },
+          ].map((p, i) => (
+            <li key={i} className="border-l-2 border-ink-900/20 pl-6 pb-6">
+              <div className="font-mono text-xs text-gold-500 tracking-widest mb-1">
+                {p.y} · {p.a}
+              </div>
+              <div className="serif-display text-lg font-bold mb-1">{p.t}</div>
+              <div className="text-xs text-paper-500 italic mb-2">{p.j}</div>
+              <div className="text-sm text-ink-600 leading-relaxed">{p.n}</div>
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {/* Tech */}
+      <section className="mb-16">
+        <div className="text-xs tracking-[0.3em] text-gold-500 uppercase font-mono mb-3">
+          Technology
+        </div>
+        <h2 className="serif-display text-3xl font-black tracking-tightest mb-6">
+          4차산업혁명 기술 활용
+        </h2>
+        <div className="grid sm:grid-cols-2 gap-px bg-ink-900/10">
+          {[
+            { t: 'AI · 자연어 처리', d: '리포트 5대 품질 기준 자동 평가, 키워드 추출, 진부 표현 감지' },
+            { t: '빅데이터', d: '5단계 구조화 데이터베이스 (Supabase PostgreSQL)' },
+            { t: '클라우드', d: 'Netlify + Supabase 기반 Serverless 자동 확장 인프라' },
+            { t: '자동화', d: '품질 점수 기반 수수료·가격 동적 산출 시스템' },
+          ].map((it, i) => (
+            <div key={i} className="bg-white p-6">
+              <div className="serif-display text-xl font-bold mb-2">{it.t}</div>
+              <div className="text-sm text-ink-600 leading-relaxed">{it.d}</div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Tagline */}
+      <section className="text-center py-16 border-t border-paper-200">
+        <p className="serif-display text-3xl md:text-4xl italic text-gold-500 leading-relaxed">
+          실패가 자산이 되는 세상을 만듭니다.
+        </p>
+      </section>
+    </article>
+  </div>
   )
 }
 
-// 하단 지표 항목들을 공통으로 렌더링하는 서브 컴포넌트
 function Stat({ n, l, s }) {
   return (
     <div className="bg-white p-6">
-      <div className="text-4xl font-black tabular-nums tracking-tightest mb-1 text-ink-900">
+      <div className="serif-display text-4xl font-black tabular-nums tracking-tightest mb-1">
         {n}
       </div>
-      <div className="text-xs font-bold text-ink-900 mb-2">{l}</div>
-      <p className="text-xs text-ink-500 leading-relaxed">{s}</p>
+      <div className="text-sm font-medium mb-1">{l}</div>
+      <div className="text-xs text-paper-500">{s}</div>
     </div>
   )
 }
