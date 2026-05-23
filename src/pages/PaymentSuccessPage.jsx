@@ -21,8 +21,8 @@ export default function PaymentSuccessPage() {
       return
     }
 
-    // Netlify Function으로 결제 최종 승인 요청 (로그인 시 userId 포함)
-    fetch('/.netlify/functions/confirm-payment', {
+    // Vercel API Route로 결제 최종 승인 요청 (로그인 시 userId 포함)
+    fetch('/api/confirm-payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

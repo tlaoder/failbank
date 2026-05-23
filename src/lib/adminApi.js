@@ -1,4 +1,4 @@
-// 어드민 API 클라이언트 (Netlify Function 호출)
+// 어드민 API 클라이언트 (Vercel API Route 호출)
 import { supabase } from './supabase'
 
 async function getJwt() {
@@ -8,7 +8,7 @@ async function getJwt() {
 
 async function call(action, extra = {}) {
   const jwt = await getJwt()
-  const res = await fetch('/.netlify/functions/admin-api', {
+  const res = await fetch('/api/admin-api', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
