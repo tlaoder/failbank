@@ -1,8 +1,26 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { supabase, isSupabaseConnected } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 import { getProfile } from '../lib/auth'
 
+const SUPA_URL = import.meta.env.VITE_SUPABASE_URL
+
 const AuthContext = createContext(null)
+
+/** localStorage에서 세션을 직접 읽어 user 반환 (네트워크 없이 즉시) */
+function readSessionFromStorage() {
+  try {
+    const key = `sb-${SUPA_URL?.match(/\/\/([^.]+)/)?.[1]}-auth-token`
+    const raw = localStorage.getItem(key)
+    if (!raw) return null
+    const parsed = JSON.parse(raw)
+    // 만료 체크
+    const exp = parsed?.expires_at
+    if (exp && exp * 1000 < Date.now()) return null
+    return parsed
+  } catch {
+    return null
+  }
+}
 
 export function AuthProvider({ children }) {
   const [user, setUser]       = useState(null)
@@ -10,28 +28,47 @@ export function AuthProvider({ children }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    if (!isSupabaseConnected()) {
+    if (!SUPA_URL) {
       setLoading(false)
       return
     }
 
-    // 현재 세션 확인
-    supabase.auth.getSession().then(async ({ data: { session } }) => {
-      setUser(session?.user ?? null)
-      if (session?.user) setProfile(await getProfile(session.user.id))
-      setLoading(false)
-    })
+    // ① localStorage에서 즉시 세션 읽기 (네트워크 불필요)
+    const stored = readSessionFromStorage()
+    const storedUser = stored?.user ?? null
 
-    // 인증 상태 변화 구독 (로그인 / 로그아웃 / 토큰 갱신)
-    const { data: { subscription } } = supabase.auth.onAuthStateChange(
-      async (_event, session) => {
+    if (storedUser) {
+      setUser(storedUser)
+      // ② 프로필 비동기 로드
+      getProfile(storedUser.id).then(p => {
+        setProfile(p)
+        setLoading(false)
+      })
+    } else {
+      setLoading(false)
+    }
+
+    // ③ Supabase auth 이벤트 구독 (로그인/로그아웃 감지)
+    let subscription
+    try {
+      const result = supabase?.auth.onAuthStateChange(async (_event, session) => {
         const u = session?.user ?? null
         setUser(u)
-        setProfile(u ? await getProfile(u.id) : null)
-      }
-    )
+        if (u) {
+          const p = await getProfile(u.id)
+          setProfile(p)
+        } else {
+          setProfile(null)
+        }
+      })
+      subscription = result?.data?.subscription
+    } catch (e) {
+      console.warn('Auth subscription error:', e)
+    }
 
-    return () => subscription.unsubscribe()
+    return () => {
+      try { subscription?.unsubscribe() } catch {}
+    }
   }, [])
 
   return (
