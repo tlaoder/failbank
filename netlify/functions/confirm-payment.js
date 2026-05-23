@@ -34,7 +34,7 @@ exports.handler = async (event) => {
     return { statusCode: 400, headers, body: JSON.stringify({ error: '잘못된 요청 형식' }) }
   }
 
-  const { paymentKey, orderId, amount, reportId } = body
+  const { paymentKey, orderId, amount, reportId, userId } = body
 
   if (!paymentKey || !orderId || !amount) {
     return {
@@ -98,11 +98,12 @@ exports.handler = async (event) => {
         },
         body: JSON.stringify({
           report_id: reportId ?? null,
+          user_id:   userId   ?? null,
           payment_key: paymentKey,
           order_id: orderId,
           amount: Number(amount),
-          status: payment.status,        // DONE | WAITING_FOR_DEPOSIT 등
-          method: payment.method ?? null, // 카드 | 가상계좌 등
+          status: payment.status,
+          method: payment.method ?? null,
           paid_at: payment.approvedAt ?? new Date().toISOString(),
         }),
       })

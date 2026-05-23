@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useSearchParams, Link } from 'react-router-dom'
 import { addPurchased } from '../lib/payment'
+import { useAuth } from '../context/AuthContext'
 
 export default function PaymentSuccessPage() {
   const [params] = useSearchParams()
   const [status, setStatus] = useState('confirming') // confirming | done | error
   const [errorMsg, setErrorMsg] = useState('')
+  const { user } = useAuth()
 
   const paymentKey = params.get('paymentKey')
   const orderId = params.get('orderId')
@@ -19,7 +21,7 @@ export default function PaymentSuccessPage() {
       return
     }
 
-    // Netlify Function으로 결제 최종 승인 요청
+    // Netlify Function으로 결제 최종 승인 요청 (로그인 시 userId 포함)
     fetch('/.netlify/functions/confirm-payment', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -28,6 +30,7 @@ export default function PaymentSuccessPage() {
         orderId,
         amount: Number(amount),
         reportId,
+        userId: user?.id ?? null,
       }),
     })
       .then(res => res.json())

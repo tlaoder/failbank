@@ -1,7 +1,11 @@
+import { useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import UserMenu from './UserMenu'
+import AuthModal from './AuthModal'
 
 export default function Layout({ children }) {
   const location = useLocation()
+  const [authModal, setAuthModal] = useState(null) // null | 'login' | 'signup'
 
   const navLink = (to, label) => {
     const active =
@@ -27,21 +31,31 @@ export default function Layout({ children }) {
       </a>
 
       <header role="banner" className="border-b border-paper-300 bg-paper-50/95 backdrop-blur-sm sticky top-0 z-40">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
-          <Link to="/" aria-label="FailBank 홈으로 이동" className="flex items-baseline gap-3">
+        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between gap-6">
+          <Link to="/" aria-label="FailBank 홈으로 이동" className="flex items-baseline gap-3 shrink-0">
             <span className="text-2xl font-black tracking-tightest text-ink-900">
               Fail<span className="text-gold-500">Bank</span>
             </span>
             <span className="text-[9px] tracking-[0.3em] text-paper-500 uppercase hidden sm:inline font-mono">EST. 2026</span>
           </Link>
-          <nav role="navigation" aria-label="주요 메뉴" className="flex items-center gap-8">
-            {navLink('/browse', 'Browse')}
-            {navLink('/submit', 'Submit')}
-            {navLink('/sell', 'Sell')}
-            {navLink('/about', 'About')}
-          </nav>
+          <div className="flex items-center gap-6 sm:gap-8">
+            <nav role="navigation" aria-label="주요 메뉴" className="flex items-center gap-5 sm:gap-8">
+              {navLink('/browse', 'Browse')}
+              {navLink('/submit', 'Submit')}
+              {navLink('/sell', 'Sell')}
+              {navLink('/about', 'About')}
+            </nav>
+            <UserMenu onOpenAuth={(mode) => setAuthModal(mode)} />
+          </div>
         </div>
       </header>
+
+      {authModal && (
+        <AuthModal
+          initialMode={authModal}
+          onClose={() => setAuthModal(null)}
+        />
+      )}
 
       <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
         {children}
