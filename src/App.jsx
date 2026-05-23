@@ -6,6 +6,8 @@ import ReportDetailPage from './pages/ReportDetailPage'
 import SubmitPage from './pages/SubmitPage'
 import SellPage from './pages/SellPage'
 import AboutPage from './pages/AboutPage'
+import PaymentSuccessPage from './pages/PaymentSuccessPage'
+import PaymentFailPage from './pages/PaymentFailPage'
 
 export default function App() {
   return (
@@ -17,6 +19,9 @@ export default function App() {
         <Route path="/submit" element={<SubmitPage />} />
         <Route path="/sell" element={<SellPage />} />
         <Route path="/about" element={<AboutPage />} />
+        {/* 토스페이먼츠 결제 콜백 */}
+        <Route path="/payment/success" element={<PaymentSuccessPage />} />
+        <Route path="/payment/fail" element={<PaymentFailPage />} />
       </Routes>
     </Layout>
   )

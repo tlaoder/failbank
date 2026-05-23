@@ -1,8 +1,10 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  functions = "netlify/functions"
 
 # SPA fallback - React Router 클라이언트 라우팅 지원
+# /.netlify/functions/* 는 Netlify가 자동으로 함수로 라우팅하므로 제외됨
 [[redirects]]
   from = "/*"
   to = "/index.html"

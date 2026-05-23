@@ -1,15 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getReport } from '../lib/reports'
-
-const PURCHASED_KEY = 'failbank_purchased'
-function getPurchased() {
-  try { return JSON.parse(localStorage.getItem(PURCHASED_KEY) || '[]') } catch { return [] }
-}
-function addPurchased(id) {
-  const list = getPurchased()
-  if (!list.includes(id)) localStorage.setItem(PURCHASED_KEY, JSON.stringify([...list, id]))
-}
+import { requestPayment, hasPurchased } from '../lib/payment'
 
 const SECTIONS = {
   background: '배경 (Background)',
@@ -31,7 +23,7 @@ export default function ReportDetailPage() {
     setLoading(true)
     getReport(id).then(r => {
       setReport(r)
-      setPurchased(getPurchased().includes(id))
+      setPurchased(hasPurchased(id))
       setLoading(false)
     }).catch(() => setLoading(false))
   }, [id])
@@ -43,11 +35,19 @@ export default function ReportDetailPage() {
 
   const handlePurchase = async () => {
     setPaying(true)
-    await new Promise(r => setTimeout(r, 1200))
-    addPurchased(id)
-    setPurchased(true)
-    setPaying(false)
-    setShowModal(false)
+    try {
+      // 토스페이먼츠 결제창 오픈 → 결제 완료 시 /payment/success 로 리다이렉트
+      await requestPayment({
+        reportId: id,
+        title: report.title,
+        price: report.price,
+      })
+      // 여기는 사용자가 결제창을 닫거나 취소한 경우에만 도달
+    } catch (err) {
+      console.error('결제 오류:', err)
+    } finally {
+      setPaying(false)
+    }
   }
 
   if (loading) return (
