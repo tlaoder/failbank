@@ -86,6 +86,16 @@ export default function UserMenu({ onOpenAuth }) {
           >
             <span>✏️</span> 리포트 등록
           </Link>
+          {profile?.role === 'admin' && (
+            <Link
+              to="/admin"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-3 px-4 py-3 text-xs text-red-500 hover:bg-red-50 transition-colors font-mono"
+            >
+              <span>⚙️</span> 관리자 패널
+            </Link>
+          )}
 
           <div className="border-t border-paper-100 mt-1">
             <button
