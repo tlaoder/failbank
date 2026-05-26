@@ -6,87 +6,154 @@
   html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #f8f6f1;
+    background-color: #f8fafc;
   }
   body {
     @apply bg-paper-50 text-ink-900 font-sans;
     min-height: 100vh;
   }
+  h1, h2, h3, h4, h5, h6 {
+    letter-spacing: -0.02em;
+  }
 }
 
 @layer components {
+  /* ── 카드 ── */
   .paper-card {
-    @apply bg-white border border-paper-200 rounded-none;
-    transition: border-color 0.2s ease;
+    @apply bg-white rounded-2xl border border-paper-100;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
   }
   .paper-card:hover {
-    @apply border-gold-400;
+    box-shadow: 0 10px 40px -8px rgb(0 0 0 / 0.12), 0 4px 16px -4px rgb(0 0 0 / 0.08);
+    transform: translateY(-2px);
   }
+
+  /* ── 버튼 ── */
   .btn-primary {
-    @apply bg-ink-900 text-paper-50 px-6 py-3 font-semibold tracking-tight rounded-none
-           hover:bg-ink-700 transition-colors duration-200
+    @apply inline-flex items-center justify-center gap-2
+           bg-ink-900 text-white px-6 py-3 font-semibold rounded-xl
+           hover:bg-ink-800 transition-all duration-200
+           shadow-sm hover:shadow-md
            disabled:opacity-40 disabled:cursor-not-allowed;
   }
   .btn-secondary {
-    @apply bg-transparent text-ink-900 border border-paper-300 px-6 py-3 font-medium tracking-tight rounded-none
-           hover:border-ink-900 hover:bg-paper-100 transition-colors duration-200;
+    @apply inline-flex items-center justify-center gap-2
+           bg-white text-ink-900 border border-paper-200 px-6 py-3 font-medium rounded-xl
+           hover:border-ink-700 hover:bg-paper-50 transition-all duration-200
+           shadow-sm;
   }
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2
+           bg-gold-500 text-ink-900 px-6 py-3 font-bold rounded-xl
+           hover:bg-gold-400 transition-all duration-200;
+    box-shadow: 0 4px 14px 0 rgb(245 158 11 / 0.3);
+  }
+  .btn-gold:hover {
+    box-shadow: 0 6px 20px 0 rgb(245 158 11 / 0.4);
+  }
+
+  /* ── 인풋 ── */
   .input-field {
-    @apply w-full bg-white border border-paper-300 rounded-none px-4 py-3 text-ink-900
-           focus:border-gold-400 focus:ring-1 focus:ring-gold-400/30 focus:outline-none transition-all
-           placeholder:text-paper-400;
+    @apply w-full bg-white border border-paper-200 rounded-xl px-4 py-3 text-ink-900
+           focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 focus:outline-none
+           transition-all placeholder:text-paper-400 text-sm;
   }
   .textarea-field {
-    @apply w-full bg-white border border-paper-300 rounded-none p-4 text-ink-900
-           focus:border-gold-400 focus:ring-1 focus:ring-gold-400/30 focus:outline-none transition-all
-           placeholder:text-paper-400 resize-none;
+    @apply w-full bg-white border border-paper-200 rounded-xl p-4 text-ink-900
+           focus:border-gold-400 focus:ring-2 focus:ring-gold-400/20 focus:outline-none
+           transition-all placeholder:text-paper-400 resize-none text-sm;
   }
   select.input-field {
     @apply bg-white text-ink-900;
   }
+
+  /* ── 배지 ── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium;
+  }
+  .badge-gold {
+    @apply badge bg-gold-100 text-gold-600 border border-gold-200;
+  }
+  .badge-sky {
+    @apply badge bg-sky-100 text-sky-600 border border-sky-200;
+  }
+  .badge-dark {
+    @apply badge bg-ink-900 text-white;
+  }
 }
 
-.serif-display {
-  font-family: 'Pretendard', system-ui, sans-serif;
-  letter-spacing: -0.03em;
-}
-
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
-}
-
+/* ── 등급 스탬프 ── */
 .grade-stamp {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
-  border: 1.5px solid currentColor;
-  border-radius: 0;
+  width: 2.75rem;
+  height: 2.75rem;
+  border: 2px solid currentColor;
+  border-radius: 0.75rem; /* rounded-xl */
   font-weight: 800;
-  font-size: 1.125rem;
+  font-size: 1rem;
   letter-spacing: -0.02em;
 }
 
+/* ── 골드 디바이더 ── */
 .divider-gold {
   height: 1px;
-  background: linear-gradient(90deg, transparent, #c9a84c66, transparent);
+  background: linear-gradient(90deg, transparent, #f59e0b55, transparent);
 }
 
+/* ── 글래스모피즘 ── */
+.glass {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+.glass-dark {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── 앰비언트 글로우 ── */
+.glow-gold {
+  box-shadow: 0 0 80px -20px rgba(245, 158, 11, 0.4);
+}
+
+/* ── 애니메이션 ── */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(10px); }
+  from { opacity: 0; transform: translateY(16px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-up {
-  animation: fadeUp 0.45s ease-out forwards;
+  animation: fadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #f8f6f1; }
-::-webkit-scrollbar-thumb { background: #d4d0c8; border-radius: 2px; }
-::-webkit-scrollbar-thumb:hover { background: #c9a84c88; }
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
 
+/* ── 스크롤바 ── */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #f8fafc; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
+/* ── 포커스 ── */
 :focus-visible {
-  outline: 2px solid #c9a84c;
+  outline: 2px solid #f59e0b;
   outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── 섹션 구분선 ── */
+.section-divider {
+  @apply border-t border-paper-100;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }

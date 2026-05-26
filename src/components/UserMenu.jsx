@@ -25,16 +25,16 @@ export default function UserMenu({ onOpenAuth }) {
 
   if (!user) {
     return (
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2">
         <button
           onClick={() => onOpenAuth('login')}
-          className="text-xs tracking-widest uppercase font-mono text-ink-500 hover:text-ink-900 transition-colors"
+          className="text-sm font-medium text-paper-500 hover:text-ink-900 transition-colors px-3 py-1.5"
         >
           로그인
         </button>
         <button
           onClick={() => onOpenAuth('signup')}
-          className="text-xs tracking-widest uppercase font-mono bg-ink-900 text-paper-50 px-4 py-2 hover:bg-ink-700 transition-colors"
+          className="text-sm font-medium bg-ink-900 text-white px-4 py-2 rounded-lg hover:bg-ink-700 transition-colors"
         >
           회원가입
         </button>
@@ -51,59 +51,64 @@ export default function UserMenu({ onOpenAuth }) {
         className="flex items-center gap-2.5 group"
       >
         {/* 아바타 */}
-        <div className="w-8 h-8 bg-ink-900 text-paper-50 text-xs font-bold flex items-center justify-center select-none group-hover:bg-gold-500 transition-colors">
+        <div className="w-8 h-8 bg-ink-900 text-white text-xs font-bold flex items-center justify-center rounded-lg select-none group-hover:bg-gold-500 transition-colors">
           {initial}
         </div>
-        <span className="text-xs font-mono text-ink-600 hidden sm:inline group-hover:text-ink-900 transition-colors">
+        <span className="text-sm text-paper-500 hidden sm:inline group-hover:text-ink-900 transition-colors">
           {displayName}
         </span>
-        <span className="text-paper-400 text-[10px]">{open ? '▲' : '▼'}</span>
+        <svg className={`w-3 h-3 text-paper-400 transition-transform ${open ? 'rotate-180' : ''}`} viewBox="0 0 12 12" fill="currentColor">
+          <path d="M6 8L1 3h10L6 8z" />
+        </svg>
       </button>
 
       {open && (
         <div
-          className="absolute right-0 top-full mt-2 w-48 bg-white border border-paper-200 shadow-lg z-50 py-1 animate-fade-up"
+          className="absolute right-0 top-full mt-2 w-52 bg-white rounded-xl border border-paper-100 shadow-[0_8px_30px_rgb(0,0,0,0.12)] z-50 overflow-hidden animate-fade-up"
           role="menu"
         >
-          <div className="px-4 py-3 border-b border-paper-100">
-            <div className="text-xs font-bold text-ink-800 truncate">{displayName}</div>
-            <div className="text-[10px] text-paper-400 font-mono truncate">{user.email}</div>
+          {/* 사용자 정보 */}
+          <div className="px-4 py-3.5 border-b border-paper-100 bg-paper-50">
+            <div className="text-sm font-bold text-ink-800 truncate">{displayName}</div>
+            <div className="text-xs text-paper-400 font-mono truncate">{user.email}</div>
           </div>
 
-          <Link
-            to="/mypage"
-            role="menuitem"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 text-xs text-ink-600 hover:bg-paper-50 hover:text-ink-900 transition-colors"
-          >
-            <span>👤</span> 마이페이지
-          </Link>
-          <Link
-            to="/submit"
-            role="menuitem"
-            onClick={() => setOpen(false)}
-            className="flex items-center gap-3 px-4 py-3 text-xs text-ink-600 hover:bg-paper-50 hover:text-ink-900 transition-colors"
-          >
-            <span>✏️</span> 리포트 등록
-          </Link>
-          {profile?.role === 'admin' && (
+          <div className="py-1.5">
             <Link
-              to="/admin"
+              to="/mypage"
               role="menuitem"
               onClick={() => setOpen(false)}
-              className="flex items-center gap-3 px-4 py-3 text-xs text-red-500 hover:bg-red-50 transition-colors font-mono"
+              className="flex items-center gap-3 px-4 py-2.5 text-sm text-ink-600 hover:bg-paper-50 hover:text-ink-900 transition-colors"
             >
-              <span>⚙️</span> 관리자 패널
+              <span className="text-base">👤</span> 마이페이지
             </Link>
-          )}
+            <Link
+              to="/submit"
+              role="menuitem"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-3 px-4 py-2.5 text-sm text-ink-600 hover:bg-paper-50 hover:text-ink-900 transition-colors"
+            >
+              <span className="text-base">✏️</span> 리포트 등록
+            </Link>
+            {profile?.role === 'admin' && (
+              <Link
+                to="/admin"
+                role="menuitem"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors font-mono"
+              >
+                <span className="text-base">⚙️</span> 관리자 패널
+              </Link>
+            )}
+          </div>
 
-          <div className="border-t border-paper-100 mt-1">
+          <div className="border-t border-paper-100 py-1.5">
             <button
               role="menuitem"
               onClick={handleSignOut}
-              className="w-full text-left flex items-center gap-3 px-4 py-3 text-xs text-red-500 hover:bg-red-50 transition-colors"
+              className="w-full text-left flex items-center gap-3 px-4 py-2.5 text-sm text-red-500 hover:bg-red-50 transition-colors"
             >
-              <span>↩</span> 로그아웃
+              <span className="text-base">↩</span> 로그아웃
             </button>
           </div>
         </div>
