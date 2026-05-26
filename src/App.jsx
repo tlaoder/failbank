@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import Layout from './components/Layout'
+import RequireAuth from './components/RequireAuth'
 import HomePage from './pages/HomePage'
 import BrowsePage from './pages/BrowsePage'
 import ReportDetailPage from './pages/ReportDetailPage'
@@ -17,14 +18,18 @@ export default function App() {
     <AuthProvider>
       <Layout>
         <Routes>
+          {/* 공개 페이지 */}
           <Route path="/" element={<HomePage />} />
           <Route path="/browse" element={<BrowsePage />} />
-          <Route path="/report/:id" element={<ReportDetailPage />} />
-          <Route path="/submit" element={<SubmitPage />} />
           <Route path="/sell" element={<SellPage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/mypage" element={<MyPage />} />
-          <Route path="/admin" element={<AdminPage />} />
+
+          {/* 로그인 필요 페이지 */}
+          <Route path="/report/:id" element={<RequireAuth><ReportDetailPage /></RequireAuth>} />
+          <Route path="/submit" element={<RequireAuth><SubmitPage /></RequireAuth>} />
+          <Route path="/mypage" element={<RequireAuth><MyPage /></RequireAuth>} />
+          <Route path="/admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
+
           {/* 토스페이먼츠 결제 콜백 */}
           <Route path="/payment/success" element={<PaymentSuccessPage />} />
           <Route path="/payment/fail" element={<PaymentFailPage />} />

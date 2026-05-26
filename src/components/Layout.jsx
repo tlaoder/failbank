@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import UserMenu from './UserMenu'
 import AuthModal from './AuthModal'
@@ -6,6 +6,13 @@ import AuthModal from './AuthModal'
 export default function Layout({ children }) {
   const location = useLocation()
   const [authModal, setAuthModal] = useState(null) // null | 'login' | 'signup'
+
+  // RequireAuth가 로그인 모달 오픈 요청을 state로 전달하면 자동으로 열기
+  useEffect(() => {
+    if (location.state?.openAuth) {
+      setAuthModal(location.state.openAuth)
+    }
+  }, [location.state])
 
   const navLink = (to, label) => {
     const active =
