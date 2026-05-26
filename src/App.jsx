@@ -1,6 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import Layout from './components/Layout'
+import ScrollToTop from './components/ScrollToTop'
 import RequireAuth from './components/RequireAuth'
 import HomePage from './pages/HomePage'
 import BrowsePage from './pages/BrowsePage'
@@ -18,6 +19,7 @@ import SubscriptionSuccessPage from './pages/SubscriptionSuccessPage'
 export default function App() {
   return (
     <AuthProvider>
+      <ScrollToTop />
       <Layout>
         <Routes>
           {/* 공개 페이지 */}
