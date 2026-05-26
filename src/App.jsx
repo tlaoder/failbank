@@ -12,6 +12,8 @@ import PaymentSuccessPage from './pages/PaymentSuccessPage'
 import PaymentFailPage from './pages/PaymentFailPage'
 import MyPage from './pages/MyPage'
 import AdminPage from './pages/AdminPage'
+import SubscriptionPage from './pages/SubscriptionPage'
+import SubscriptionSuccessPage from './pages/SubscriptionSuccessPage'
 
 export default function App() {
   return (
@@ -29,6 +31,10 @@ export default function App() {
           <Route path="/submit" element={<RequireAuth><SubmitPage /></RequireAuth>} />
           <Route path="/mypage" element={<RequireAuth><MyPage /></RequireAuth>} />
           <Route path="/admin" element={<RequireAuth><AdminPage /></RequireAuth>} />
+
+          {/* 판매자 구독 */}
+          <Route path="/subscription" element={<RequireAuth><SubscriptionPage /></RequireAuth>} />
+          <Route path="/subscription/success" element={<SubscriptionSuccessPage />} />
 
           {/* 토스페이먼츠 결제 콜백 */}
           <Route path="/payment/success" element={<PaymentSuccessPage />} />

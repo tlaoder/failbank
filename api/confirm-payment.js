@@ -66,7 +66,24 @@ export default async function handler(req, res) {
     return res.status(502).json({ error: '토스 서버와 통신 중 오류가 발생했습니다' })
   }
 
-  // ── 2. Supabase purchases 테이블에 기록 ──────────────
+  // ── 2. 수수료 계산 (리포트 점수 기반) ───────────────
+  let commissionRate = 0.20
+  let sellerPayout = 0
+
+  if (SUPABASE_URL && SUPABASE_SERVICE_KEY && reportId) {
+    try {
+      const reportRes = await fetch(
+        `${SUPABASE_URL}/rest/v1/reports?id=eq.${reportId}&select=score`,
+        { headers: { apikey: SUPABASE_SERVICE_KEY, Authorization: `Bearer ${SUPABASE_SERVICE_KEY}` } }
+      )
+      const reportData = await reportRes.json()
+      const score = reportData?.[0]?.score ?? 0
+      commissionRate = score >= 90 ? 0.15 : 0.20
+    } catch {}
+  }
+  sellerPayout = Math.round(Number(amount) * (1 - commissionRate))
+
+  // ── 3. Supabase purchases 테이블에 기록 ──────────────
   if (SUPABASE_URL && SUPABASE_SERVICE_KEY) {
     try {
       await fetch(`${SUPABASE_URL}/rest/v1/purchases`, {
@@ -78,14 +95,16 @@ export default async function handler(req, res) {
           Prefer: 'return=minimal',
         },
         body: JSON.stringify({
-          report_id:   reportId   ?? null,
-          user_id:     userId     ?? null,
-          payment_key: paymentKey,
-          order_id:    orderId,
-          amount:      Number(amount),
-          status:      payment.status,
-          method:      payment.method ?? null,
-          paid_at:     payment.approvedAt ?? new Date().toISOString(),
+          report_id:       reportId       ?? null,
+          user_id:         userId         ?? null,
+          payment_key:     paymentKey,
+          order_id:        orderId,
+          amount:          Number(amount),
+          status:          payment.status,
+          method:          payment.method ?? null,
+          paid_at:         payment.approvedAt ?? new Date().toISOString(),
+          commission_rate: commissionRate,
+          seller_payout:   sellerPayout,
         }),
       })
     } catch (err) {

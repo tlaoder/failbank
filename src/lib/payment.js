@@ -45,6 +45,23 @@ export async function requestPayment({ reportId, title, price }) {
   })
 }
 
+/**
+ * 판매자 구독 결제 (월 29,900원)
+ * 성공 시 /subscription/success 로 리다이렉트
+ */
+export async function requestSubscription({ userId }) {
+  const toss = await loadTossPayments()
+  const orderId = `fb_sub_${userId}_${Date.now()}`
+  await toss.requestPayment('카드', {
+    amount: 29900,
+    orderId,
+    orderName: 'FailBank 판매자 구독 (1개월)',
+    customerName: '구독자',
+    successUrl: `${window.location.origin}/subscription/success?userId=${encodeURIComponent(userId)}`,
+    failUrl: `${window.location.origin}/payment/fail`,
+  })
+}
+
 // ─────────────────────────────────────────────
 //  구매 기록 (localStorage)
 //  서버 검증 완료 후 PaymentSuccessPage에서 호출

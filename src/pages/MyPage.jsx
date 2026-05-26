@@ -9,6 +9,31 @@ const TABS = [
   { key: 'profile',   label: '프로필 편집' },
 ]
 
+function SubscriptionBadge({ profile }) {
+  const isActive = profile?.subscription_status === 'active'
+  const expires = profile?.subscription_expires_at
+    ? new Date(profile.subscription_expires_at).toLocaleDateString('ko-KR')
+    : null
+  return (
+    <div className="flex items-center gap-3">
+      {isActive ? (
+        <div className="flex items-center gap-2 bg-gold-100 border border-gold-300 px-4 py-2 text-xs font-mono">
+          <span className="text-gold-600">⭐</span>
+          <span className="text-ink-700 font-semibold">Pro 구독 중</span>
+          {expires && <span className="text-paper-500">· {expires} 만료</span>}
+        </div>
+      ) : (
+        <Link
+          to="/subscription"
+          className="flex items-center gap-2 border border-paper-300 px-4 py-2 text-xs font-mono text-ink-500 hover:border-gold-400 hover:text-gold-600 transition-colors"
+        >
+          <span>⭐</span> 판매자 구독 29,900원/월 →
+        </Link>
+      )}
+    </div>
+  )
+}
+
 export default function MyPage() {
   const { user, profile, setProfile, loading } = useAuth()
   const navigate = useNavigate()
@@ -34,15 +59,18 @@ export default function MyPage() {
       <div className="max-w-5xl mx-auto px-6 py-16">
 
         {/* 헤더 */}
-        <div className="border-b border-paper-300 pb-10 mb-12 flex items-end justify-between">
-          <div>
-            <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase font-mono mb-3">My Account</div>
-            <h1 className="text-4xl font-black tracking-tightest text-ink-900">{displayName}</h1>
-            <p className="text-sm text-paper-500 font-mono mt-2">{user.email}</p>
+        <div className="border-b border-paper-300 pb-10 mb-12">
+          <div className="flex items-end justify-between mb-4">
+            <div>
+              <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase font-mono mb-3">My Account</div>
+              <h1 className="text-4xl font-black tracking-tightest text-ink-900">{displayName}</h1>
+              <p className="text-sm text-paper-500 font-mono mt-2">{user.email}</p>
+            </div>
+            <div className="w-14 h-14 bg-ink-900 text-paper-50 text-xl font-black flex items-center justify-center select-none">
+              {displayName[0]?.toUpperCase()}
+            </div>
           </div>
-          <div className="w-14 h-14 bg-ink-900 text-paper-50 text-xl font-black flex items-center justify-center select-none">
-            {displayName[0]?.toUpperCase()}
-          </div>
+          <SubscriptionBadge profile={profile} />
         </div>
 
         {/* 탭 */}
@@ -160,30 +188,60 @@ function ReportsTab({ userId }) {
     )
   }
 
+  const totalViews = reports.reduce((s, r) => s + (r.view_count || 0), 0)
+  const avgScore = Math.round(reports.reduce((s, r) => s + r.score, 0) / reports.length)
+  const commissionRate = avgScore >= 90 ? 15 : 20
+
   return (
-    <div className="space-y-1">
-      {reports.map(r => (
-        <Link
-          key={r.id}
-          to={`/report/${r.id}`}
-          className="bg-white border border-paper-200 p-5 flex items-center gap-5 hover:bg-paper-50 transition-colors group block"
-        >
-          <div className={`text-2xl font-black font-mono w-10 text-center ${r.grade === 'S' ? 'text-gold-500' : 'text-ink-300'}`}>
-            {r.grade}
-          </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-bold text-ink-800 truncate group-hover:text-ink-900">{r.title}</div>
-            <div className="text-xs text-paper-500 font-mono mt-0.5">
-              {r.category} · {new Date(r.created_at).toLocaleDateString('ko-KR')} · 조회 {r.view_count ?? 0}
-            </div>
-          </div>
-          <div className="text-right shrink-0">
-            <div className="font-bold text-ink-900 tabular-nums">{r.price.toLocaleString()}원</div>
-            <div className="text-[10px] text-paper-400 font-mono">{r.score}점</div>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <>
+      {/* 수익 통계 */}
+      <div className="grid grid-cols-3 gap-px bg-paper-200 mb-6">
+        <div className="bg-white p-5 text-center">
+          <div className="text-2xl font-black text-ink-900 tabular-nums">{reports.length}</div>
+          <div className="text-[9px] text-paper-400 font-mono tracking-widest mt-1">등록 리포트</div>
+        </div>
+        <div className="bg-white p-5 text-center">
+          <div className="text-2xl font-black text-ink-900 tabular-nums">{totalViews.toLocaleString()}</div>
+          <div className="text-[9px] text-paper-400 font-mono tracking-widest mt-1">총 조회수</div>
+        </div>
+        <div className="bg-white p-5 text-center">
+          <div className="text-2xl font-black text-gold-500 tabular-nums">{commissionRate}%</div>
+          <div className="text-[9px] text-paper-400 font-mono tracking-widest mt-1">적용 수수료</div>
+        </div>
+      </div>
+
+      <div className="space-y-1">
+        {reports.map(r => {
+          const rate = r.score >= 90 ? 0.15 : 0.20
+          const payout = Math.round(r.price * (1 - rate))
+          return (
+            <Link
+              key={r.id}
+              to={`/report/${r.id}`}
+              className="bg-white border border-paper-200 p-5 flex items-center gap-5 hover:bg-paper-50 transition-colors group block"
+            >
+              <div className={`text-2xl font-black font-mono w-10 text-center ${r.grade === 'S' ? 'text-gold-500' : 'text-ink-300'}`}>
+                {r.grade}
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="font-bold text-ink-800 truncate group-hover:text-ink-900">
+                  {r.is_priority && <span className="text-gold-500 mr-1">⭐</span>}
+                  {r.title}
+                </div>
+                <div className="text-xs text-paper-500 font-mono mt-0.5">
+                  {r.category} · {new Date(r.created_at).toLocaleDateString('ko-KR')} · 조회 {r.view_count ?? 0}
+                </div>
+              </div>
+              <div className="text-right shrink-0">
+                <div className="font-bold text-ink-900 tabular-nums">{r.price.toLocaleString()}원</div>
+                <div className="text-[10px] text-gold-600 font-mono">정산 {payout.toLocaleString()}원</div>
+                <div className="text-[10px] text-paper-400 font-mono">{r.score}점 · 수수료 {(rate * 100).toFixed(0)}%</div>
+              </div>
+            </Link>
+          )
+        })}
+      </div>
+    </>
   )
 }
 

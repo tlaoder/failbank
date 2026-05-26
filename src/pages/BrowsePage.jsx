@@ -6,14 +6,15 @@ export default function BrowsePage() {
   const [reports, setReports] = useState([])
   const [category, setCategory] = useState(null)
   const [sortBy, setSortBy] = useState('recent')
+  const [isMeta, setIsMeta] = useState(false)
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     setLoading(true)
-    listReports({ category, sortBy })
+    listReports({ category, sortBy, isMeta })
       .then(r => { setReports(r); setLoading(false) })
       .catch(() => setLoading(false))
-  }, [category, sortBy])
+  }, [category, sortBy, isMeta])
 
   const sortLabels = { recent: '최신순', popular: '인기순', score: '점수순' }
 
@@ -31,9 +32,12 @@ export default function BrowsePage() {
           <div className="flex-1">
             <div id="category-label" className="text-[9px] tracking-[0.3em] text-paper-500 uppercase font-mono mb-4">카테고리</div>
             <div role="group" aria-labelledby="category-label" className="flex flex-wrap gap-2">
-              <Chip active={category === null} onClick={() => setCategory(null)}>전체</Chip>
+              <Chip active={category === null && !isMeta} onClick={() => { setCategory(null); setIsMeta(false) }}>전체</Chip>
+              <Chip active={isMeta} onClick={() => { setIsMeta(v => !v); setCategory(null) }}>
+                📈 데이터 리포트
+              </Chip>
               {CATEGORIES.map(c => (
-                <Chip key={c} active={category === c} onClick={() => setCategory(c)}>{c}</Chip>
+                <Chip key={c} active={category === c && !isMeta} onClick={() => { setCategory(c); setIsMeta(false) }}>{c}</Chip>
               ))}
             </div>
           </div>
@@ -85,6 +89,12 @@ export default function BrowsePage() {
                       <div className={`grade-stamp ${r.grade === 'S' ? 'text-gold-500' : 'text-ink-400'}`}>
                         {r.grade}
                       </div>
+                      {r.is_priority && (
+                        <div className="text-[8px] text-gold-500 font-mono tracking-wider mt-1">⭐ PRO</div>
+                      )}
+                      {r.is_meta && (
+                        <div className="text-[8px] text-blue-500 font-mono tracking-wider mt-1">📈 DATA</div>
+                      )}
                     </div>
                     <div className="md:col-span-7">
                       <div className="text-[9px] tracking-[0.3em] text-paper-500 uppercase font-mono mb-2">

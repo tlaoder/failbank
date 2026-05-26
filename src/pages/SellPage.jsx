@@ -119,6 +119,61 @@ export default function SellPage() {
             </div>
           </div>
         </section>
+        {/* B2B 패키지 섹션 */}
+        <section id="b2b" className="mb-20 scroll-mt-24">
+          <div className="text-[9px] tracking-[0.4em] text-gold-500 uppercase mb-3 font-mono">B2B Package</div>
+          <h2 className="text-4xl font-black tracking-tightest mb-3 text-ink-900">기관 단위 도입</h2>
+          <p className="text-ink-500 mb-10">액셀러레이터·대학·VC를 위한 전용 패키지. 멤버 전체가 실패 데이터를 활용합니다.</p>
+          <div className="grid md:grid-cols-3 gap-px bg-paper-200">
+            <B2BCard
+              label="액셀러레이터"
+              price="490,000"
+              unit="월"
+              tag="Accelerator"
+              items={[
+                '배치 전체 멤버 무제한 접근',
+                '포트폴리오사 업종 필터 대시보드',
+                '월간 실패 트렌드 브리핑',
+                '전담 계정 매니저',
+              ]}
+            />
+            <B2BCard
+              label="대학 창업지원단"
+              price="3,900,000"
+              unit="연"
+              tag="University"
+              highlight
+              items={[
+                '재학생·졸업생 전원 계정',
+                '창업 강의 자료 공유 라이선스',
+                '학기별 실패 사례 리포트 큐레이션',
+                '현장실습·캡스톤 연계 가능',
+              ]}
+            />
+            <B2BCard
+              label="VC · 투자사"
+              price="2,000,000"
+              unit="건"
+              tag="VC"
+              items={[
+                '투자 검토 업종 맞춤 리포트 팩',
+                '포트폴리오 실패 패턴 분석',
+                '익명 데이터 커스텀 리포트',
+                '1:1 데이터 컨설팅 1회 포함',
+              ]}
+            />
+          </div>
+          <div className="mt-6 p-6 bg-ink-900 text-center">
+            <p className="text-paper-300 text-sm mb-4">도입 문의 · 시범 사용 신청 · 커스텀 견적</p>
+            <a
+              href="mailto:b2b@failbank.kr"
+              className="inline-block border border-gold-400 text-gold-400 px-8 py-3 text-sm font-mono hover:bg-gold-400 hover:text-ink-900 transition-colors"
+            >
+              b2b@failbank.kr 로 문의하기 →
+            </a>
+          </div>
+        </section>
+
         <section className="text-center py-16 border-t border-paper-300">
           <h2 className="text-3xl font-black tracking-tightest mb-6 text-ink-900">준비됐다면, 첫 리포트를 써보세요.</h2>
           <Link to="/submit" className="btn-primary inline-block text-base px-10 py-4">리포트 작성 시작하기 →</Link>
@@ -145,6 +200,26 @@ function BootstrapStat({ n, l }) {
     <div className="bg-ink-800 p-6">
       <div className="text-4xl font-black tabular-nums tracking-tightest text-paper-50">{n}</div>
       <div className="text-xs text-paper-400 mt-1">{l}</div>
+    </div>
+  )
+}
+
+function B2BCard({ label, price, unit, tag, items, highlight = false }) {
+  return (
+    <div className={`p-8 ${highlight ? 'bg-ink-900' : 'bg-white'}`}>
+      <div className={`text-[9px] tracking-[0.3em] uppercase font-mono mb-2 ${highlight ? 'text-gold-400' : 'text-gold-500'}`}>{tag}</div>
+      <div className={`text-xl font-bold mb-1 ${highlight ? 'text-paper-50' : 'text-ink-900'}`}>{label}</div>
+      <div className={`text-3xl font-black tabular-nums mb-1 ${highlight ? 'text-gold-400' : 'text-ink-900'}`}>
+        {price}<span className={`text-sm font-normal ml-1 ${highlight ? 'text-paper-400' : 'text-paper-400'}`}>원/{unit}</span>
+      </div>
+      <ul className={`mt-5 space-y-2 text-sm ${highlight ? 'text-paper-300' : 'text-ink-600'}`}>
+        {items.map(item => (
+          <li key={item} className="flex gap-2">
+            <span className={highlight ? 'text-gold-400' : 'text-gold-500'}>→</span>
+            {item}
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
