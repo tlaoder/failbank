@@ -7,6 +7,7 @@ export default function Layout({ children }) {
   const location = useLocation()
   const [authModal, setAuthModal] = useState(null) // null | 'login' | 'signup'
   const [scrolled, setScrolled] = useState(false)
+  const [showBanner, setShowBanner] = useState(true)
 
   // RequireAuth가 로그인 모달 오픈 요청을 state로 전달하면 자동으로 열기
   useEffect(() => {
@@ -49,6 +50,27 @@ export default function Layout({ children }) {
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink-900 focus:text-paper-50 focus:px-4 focus:py-2 focus:text-sm focus:rounded-lg">
         본문으로 바로가기
       </a>
+
+      {/* ── Announcement Bar (GrowthHackers-style) ── */}
+      {showBanner && (
+        <div className="relative bg-gold-500 text-ink-900 py-2.5 px-6 text-sm font-semibold flex items-center justify-center gap-2 z-50">
+          <span>🎉</span>
+          <span>초기 판매자 100명 모집 중 · 3개월 수수료 0%</span>
+          <Link
+            to="/sell"
+            className="underline underline-offset-2 ml-1 hover:no-underline whitespace-nowrap"
+          >
+            신청하기 →
+          </Link>
+          <button
+            onClick={() => setShowBanner(false)}
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center text-ink-700 hover:text-ink-900 hover:bg-gold-400/40 rounded-full transition-colors"
+            aria-label="공지 닫기"
+          >
+            ✕
+          </button>
+        </div>
+      )}
 
       <header
         role="banner"

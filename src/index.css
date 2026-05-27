@@ -78,8 +78,36 @@
   .badge-sky {
     @apply badge bg-sky-100 text-sky-600 border border-sky-200;
   }
+  .badge-rose {
+    @apply badge bg-rose-100 text-rose-600 border border-rose-200;
+  }
+  .badge-emerald {
+    @apply badge bg-emerald-100 text-emerald-600 border border-emerald-200;
+  }
   .badge-dark {
     @apply badge bg-ink-900 text-white;
+  }
+
+  /* ── GH-style 커뮤니티 포스트 카드 (왼쪽 grade 보더) ── */
+  .post-card {
+    @apply bg-white rounded-2xl overflow-hidden;
+    border: 1px solid #f1f5f9;
+    border-left-width: 4px;
+    border-left-color: transparent;
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.06), 0 1px 2px -1px rgb(0 0 0 / 0.06);
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+  }
+  .post-card:hover {
+    box-shadow: 0 10px 40px -8px rgb(0 0 0 / 0.13), 0 4px 16px -4px rgb(0 0 0 / 0.08);
+    transform: translateY(-2px);
+  }
+
+  /* ── 에코시스템 카드 (GH-style offering block) ── */
+  .ecosystem-card {
+    @apply rounded-2xl p-8 border transition-all duration-200;
+  }
+  .ecosystem-card:hover {
+    transform: translateY(-3px);
   }
 }
 
