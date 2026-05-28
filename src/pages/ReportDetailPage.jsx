@@ -45,7 +45,7 @@ export default function ReportDetailPage() {
   }
 
   if (loading) return (
-    <div className="bg-paper-50 min-h-screen flex items-center justify-center">
+    <div className="bg-paper-50 dark:bg-[#070d1a] min-h-screen flex items-center justify-center">
       <div className="flex flex-col items-center gap-4">
         <div className="w-10 h-10 border-2 border-gold-400 border-t-transparent rounded-full animate-spin" />
         <p className="text-sm text-paper-400">불러오는 중...</p>
@@ -54,7 +54,7 @@ export default function ReportDetailPage() {
   )
 
   if (!report) return (
-    <div className="bg-paper-50 min-h-screen flex items-center justify-center text-center px-6">
+    <div className="bg-paper-50 dark:bg-[#070d1a] min-h-screen flex items-center justify-center text-center px-6">
       <div>
         <div className="text-5xl mb-6">🗂️</div>
         <div className="text-xl font-bold text-ink-700 mb-4">리포트를 찾을 수 없습니다.</div>
@@ -66,7 +66,7 @@ export default function ReportDetailPage() {
   const locked = ['cause', 'loss', 'lesson']
 
   return (
-    <div className="bg-paper-50 min-h-screen">
+    <div className="bg-paper-50 dark:bg-[#070d1a] min-h-screen">
       <article className="max-w-3xl mx-auto px-6 py-12">
 
         {/* 뒤로가기 */}
@@ -137,11 +137,11 @@ export default function ReportDetailPage() {
             return (
               <div key={key} className="paper-card overflow-hidden">
                 {/* 섹션 헤더 */}
-                <div className="flex items-center gap-3 px-6 py-4 border-b border-paper-100 bg-paper-50">
+                <div className="flex items-center gap-3 px-6 py-4 border-b border-paper-100 dark:border-ink-700 bg-paper-50 dark:bg-ink-800">
                   <span className="text-xl">{icon}</span>
                   <div>
-                    <div className="text-sm font-bold text-ink-800">{label}</div>
-                    <div className="text-xs text-paper-400 font-mono">{sub}</div>
+                    <div className="text-sm font-bold text-ink-800 dark:text-paper-100">{label}</div>
+                    <div className="text-xs text-paper-400 dark:text-paper-500 font-mono">{sub}</div>
                   </div>
                   {isLocked && (
                     <span className="ml-auto badge bg-paper-100 text-paper-500 text-xs">🔒 구매 후 열람</span>
@@ -186,7 +186,7 @@ export default function ReportDetailPage() {
           onClick={e => { if (e.target === e.currentTarget) setShowModal(false) }}
         >
           <div className="absolute inset-0 bg-ink-900/60 backdrop-blur-sm" aria-hidden />
-          <div className="relative bg-white rounded-2xl w-full max-w-md p-8 animate-fade-up shadow-2xl">
+          <div className="relative bg-white dark:bg-ink-800 rounded-2xl w-full max-w-md p-8 animate-fade-up shadow-2xl">
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 w-8 h-8 flex items-center justify-center text-paper-400 hover:text-ink-900 hover:bg-paper-100 rounded-lg transition-colors"
@@ -205,7 +205,7 @@ export default function ReportDetailPage() {
               </p>
             </div>
 
-            <div className="bg-paper-50 rounded-xl divide-y divide-paper-100 mb-6 text-sm">
+            <div className="bg-paper-50 dark:bg-ink-900 rounded-xl divide-y divide-paper-100 dark:divide-ink-700 mb-6 text-sm">
               <div className="flex justify-between px-5 py-3">
                 <span className="text-paper-500">카테고리</span>
                 <span className="text-ink-700">{report.category}</span>

@@ -27,7 +27,7 @@ export default function BrowsePage() {
   const sortLabels = { recent: '최신순', popular: '인기순', score: '점수순' }
 
   return (
-    <div className="bg-paper-50 min-h-screen">
+    <div className="bg-paper-50 dark:bg-[#070d1a] min-h-screen">
 
       {/* ── 다크 페이지 헤더 (GH-style) ── */}
       <div className="bg-ink-900 px-6 py-16 relative overflow-hidden">
@@ -52,7 +52,7 @@ export default function BrowsePage() {
         <div className="flex flex-col lg:flex-row gap-5 mb-8">
           {/* 카테고리 */}
           <div className="flex-1">
-            <div id="category-label" className="text-xs font-semibold text-paper-400 uppercase tracking-wider mb-3">
+            <div id="category-label" className="text-xs font-semibold text-paper-400 dark:text-paper-500 uppercase tracking-wider mb-3">
               카테고리
             </div>
             <div role="group" aria-labelledby="category-label" className="flex flex-wrap gap-2">
@@ -99,7 +99,7 @@ export default function BrowsePage() {
         </div>
 
         {/* 결과 수 */}
-        <p className="text-sm text-paper-400 mb-6 font-mono" aria-live="polite">
+        <p className="text-sm text-paper-400 dark:text-paper-500 mb-6 font-mono" aria-live="polite">
           {loading ? '로딩 중...' : `${reports.length}개의 리포트`}
         </p>
 

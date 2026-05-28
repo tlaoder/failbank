@@ -10,7 +10,7 @@ export default function HomePage() {
   }, [])
 
   return (
-    <div className="bg-paper-50">
+    <div className="bg-paper-50 dark:bg-[#070d1a]">
 
       {/* ── HERO ─────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-hero-gradient px-6 pt-20 pb-28 md:min-h-[88vh] flex flex-col justify-center">
@@ -64,12 +64,12 @@ export default function HomePage() {
 
       {/* ── ECOSYSTEM ────────────────────────────────────── */}
       {/* GrowthHackers의 "당신은 어떤 목적으로 오셨나요?" 섹션 */}
-      <section className="py-24 px-6 bg-white section-divider">
+      <section className="py-24 px-6 bg-white dark:bg-ink-900 section-divider">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="badge-gold mb-4 inline-flex">Ecosystem</span>
-            <h2 className="text-4xl font-black text-ink-900">당신은 어떤 목적으로 오셨나요?</h2>
-            <p className="text-paper-400 mt-3 max-w-xl mx-auto text-lg">
+            <h2 className="text-4xl font-black text-ink-900 dark:text-paper-50">당신은 어떤 목적으로 오셨나요?</h2>
+            <p className="text-paper-400 dark:text-paper-500 mt-3 max-w-xl mx-auto text-lg">
               FailBank는 실패 데이터를 중심으로 구매자·판매자·기관을 연결하는 생태계입니다.
             </p>
           </div>
@@ -138,7 +138,7 @@ export default function HomePage() {
           <div className="flex items-end justify-between mb-12">
             <div>
               <span className="badge-gold mb-3 inline-flex">🔥 이번 주 인기</span>
-              <h2 className="text-4xl font-black text-ink-900">트렌딩 리포트</h2>
+              <h2 className="text-4xl font-black text-ink-900 dark:text-paper-50">트렌딩 리포트</h2>
             </div>
             <Link to="/browse"
               className="hidden sm:flex items-center gap-2 text-sm text-paper-400 hover:text-gold-500 transition-colors font-medium">
@@ -156,12 +156,12 @@ export default function HomePage() {
       </section>
 
       {/* ── HOW IT WORKS ─────────────────────────────────── */}
-      <section className="py-24 px-6 bg-white section-divider">
+      <section className="py-24 px-6 bg-white dark:bg-ink-900 section-divider">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <span className="badge-sky mb-4 inline-flex">How it works</span>
-            <h2 className="text-4xl font-black text-ink-900">5단계 구조화 템플릿</h2>
-            <p className="text-paper-400 mt-3">30분이면 완성됩니다.</p>
+            <h2 className="text-4xl font-black text-ink-900 dark:text-paper-50">5단계 구조화 템플릿</h2>
+            <p className="text-paper-400 dark:text-paper-500 mt-3">30분이면 완성됩니다.</p>
           </div>
           <div className="grid md:grid-cols-5 gap-4">
             {[
@@ -230,19 +230,19 @@ function EcosystemCard({ icon, tag, title, desc, cta, accentClass, highlight = f
   return (
     <div className={`ecosystem-card flex flex-col ${
       highlight
-        ? 'bg-ink-900 border-ink-800 shadow-[0_4px_24px_-4px_rgb(0_0_0/0.3)]'
-        : 'bg-white border-paper-100 shadow-card hover:shadow-card-hover'
+        ? 'bg-ink-900 border-ink-800 shadow-[0_4px_24px_-4px_rgb(0_0_0/0.3)] dark:bg-[#050b14] dark:border-ink-700'
+        : 'bg-white border-paper-100 shadow-card hover:shadow-card-hover dark:bg-ink-800 dark:border-ink-700'
     }`}>
       {/* 아이콘 박스 */}
       <div className={`w-14 h-14 rounded-xl flex items-center justify-center text-2xl mb-6 ${
-        highlight ? 'bg-white/8' : 'bg-paper-50'
+        highlight ? 'bg-white/8' : 'bg-paper-50 dark:bg-ink-700'
       }`}>
         {icon}
       </div>
 
       <div className={`text-xs font-mono tracking-widest uppercase mb-2 ${accentClass}`}>{tag}</div>
-      <h3 className={`text-xl font-bold mb-3 ${highlight ? 'text-white' : 'text-ink-900'}`}>{title}</h3>
-      <p className={`text-sm leading-relaxed mb-6 flex-1 ${highlight ? 'text-slate-400' : 'text-paper-500'}`}>{desc}</p>
+      <h3 className={`text-xl font-bold mb-3 ${highlight ? 'text-white' : 'text-ink-900 dark:text-paper-50'}`}>{title}</h3>
+      <p className={`text-sm leading-relaxed mb-6 flex-1 ${highlight ? 'text-slate-400' : 'text-paper-500 dark:text-paper-400'}`}>{desc}</p>
 
       <Link
         to={cta.to}

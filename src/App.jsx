@@ -1,5 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
 import Layout from './components/Layout'
 import ScrollToTop from './components/ScrollToTop'
 import RequireAuth from './components/RequireAuth'
@@ -18,6 +19,7 @@ import SubscriptionSuccessPage from './pages/SubscriptionSuccessPage'
 
 export default function App() {
   return (
+    <ThemeProvider>
     <AuthProvider>
       <ScrollToTop />
       <Layout>
@@ -44,5 +46,6 @@ export default function App() {
         </Routes>
       </Layout>
     </AuthProvider>
+    </ThemeProvider>
   )
 }

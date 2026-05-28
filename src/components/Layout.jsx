@@ -2,21 +2,21 @@ import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import UserMenu from './UserMenu'
 import AuthModal from './AuthModal'
+import { useTheme } from '../context/ThemeContext'
 
 export default function Layout({ children }) {
   const location = useLocation()
-  const [authModal, setAuthModal] = useState(null) // null | 'login' | 'signup'
+  const { theme, toggleTheme } = useTheme()
+  const [authModal, setAuthModal] = useState(null)
   const [scrolled, setScrolled] = useState(false)
   const [showBanner, setShowBanner] = useState(true)
 
-  // RequireAuth가 로그인 모달 오픈 요청을 state로 전달하면 자동으로 열기
   useEffect(() => {
     if (location.state?.openAuth) {
       setAuthModal(location.state.openAuth)
     }
   }, [location.state])
 
-  // 스크롤에 따라 헤더 그림자 강도 조절
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8)
     window.addEventListener('scroll', onScroll, { passive: true })
@@ -34,7 +34,7 @@ export default function Layout({ children }) {
         className={`text-sm font-medium transition-colors relative pb-0.5 ${
           active
             ? 'text-gold-500'
-            : 'text-paper-500 hover:text-ink-900'
+            : 'text-paper-500 hover:text-ink-900 dark:hover:text-paper-100'
         }`}
       >
         {label}
@@ -46,20 +46,17 @@ export default function Layout({ children }) {
   }
 
   return (
-    <div className="min-h-screen flex flex-col bg-paper-50">
+    <div className="min-h-screen flex flex-col bg-paper-50 dark:bg-[#070d1a]">
       <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-ink-900 focus:text-paper-50 focus:px-4 focus:py-2 focus:text-sm focus:rounded-lg">
         본문으로 바로가기
       </a>
 
-      {/* ── Announcement Bar (GrowthHackers-style) ── */}
+      {/* ── Announcement Bar ── */}
       {showBanner && (
         <div className="relative bg-gold-500 text-ink-900 py-2.5 px-6 text-sm font-semibold flex items-center justify-center gap-2 z-50">
           <span>🎉</span>
           <span>초기 판매자 100명 모집 중 · 3개월 수수료 0%</span>
-          <Link
-            to="/sell"
-            className="underline underline-offset-2 ml-1 hover:no-underline whitespace-nowrap"
-          >
+          <Link to="/sell" className="underline underline-offset-2 ml-1 hover:no-underline whitespace-nowrap">
             신청하기 →
           </Link>
           <button
@@ -72,37 +69,62 @@ export default function Layout({ children }) {
         </div>
       )}
 
+      {/* ── 헤더 ── */}
       <header
         role="banner"
-        className={`bg-white/95 backdrop-blur-md sticky top-0 z-40 transition-shadow duration-200 ${
-          scrolled ? 'shadow-[0_1px_20px_0_rgb(0_0_0/0.08)]' : 'border-b border-paper-100'
+        className={`bg-white/95 dark:bg-ink-900/95 backdrop-blur-md sticky top-0 z-40 transition-all duration-200 ${
+          scrolled
+            ? 'shadow-[0_1px_20px_0_rgb(0_0_0/0.10)] dark:shadow-[0_1px_20px_0_rgb(0_0_0/0.4)]'
+            : 'border-b border-paper-100 dark:border-ink-800'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
           {/* 로고 */}
           <Link to="/" aria-label="FailBank 홈으로 이동" className="flex items-center gap-3 shrink-0">
-            <div className="w-8 h-8 bg-ink-900 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 bg-ink-900 dark:bg-ink-700 rounded-lg flex items-center justify-center">
               <span className="text-gold-400 font-black text-sm leading-none">F</span>
             </div>
-            <span className="text-xl font-black tracking-tight text-ink-900">
+            <span className="text-xl font-black tracking-tight text-ink-900 dark:text-paper-50">
               Fail<span className="text-gold-500">Bank</span>
             </span>
           </Link>
 
-          {/* 네비게이션 */}
-          <div className="flex items-center gap-6 sm:gap-8">
+          {/* 우측 메뉴 */}
+          <div className="flex items-center gap-4 sm:gap-6">
             <nav role="navigation" aria-label="주요 메뉴" className="hidden sm:flex items-center gap-6">
               {navLink('/browse', 'Browse')}
               {navLink('/submit', 'Submit')}
               {navLink('/sell', 'Sell')}
               {navLink('/about', 'About')}
             </nav>
+
+            {/* ── 다크/라이트 토글 ── */}
+            <button
+              onClick={toggleTheme}
+              role="switch"
+              aria-checked={theme === 'dark'}
+              aria-label={theme === 'dark' ? '라이트 모드로 전환' : '다크 모드로 전환'}
+              className={`relative w-[52px] h-7 rounded-full transition-colors duration-300 shrink-0 flex items-center px-[3px] ${
+                theme === 'dark'
+                  ? 'bg-ink-600 border border-ink-500'
+                  : 'bg-paper-200 border border-paper-300'
+              }`}
+            >
+              <span
+                className={`w-[22px] h-[22px] rounded-full bg-white shadow flex items-center justify-center text-[11px] transition-transform duration-300 ${
+                  theme === 'dark' ? 'translate-x-[24px]' : 'translate-x-0'
+                }`}
+              >
+                {theme === 'dark' ? '🌙' : '☀️'}
+              </span>
+            </button>
+
             <UserMenu onOpenAuth={(mode) => setAuthModal(mode)} />
           </div>
         </div>
 
         {/* 모바일 하단 네비 */}
-        <nav className="sm:hidden flex border-t border-paper-100 px-6 py-2 gap-6" role="navigation" aria-label="모바일 메뉴">
+        <nav className="sm:hidden flex border-t border-paper-100 dark:border-ink-800 px-6 py-2 gap-6" role="navigation" aria-label="모바일 메뉴">
           {navLink('/browse', 'Browse')}
           {navLink('/submit', 'Submit')}
           {navLink('/sell', 'Sell')}
@@ -111,17 +133,15 @@ export default function Layout({ children }) {
       </header>
 
       {authModal && (
-        <AuthModal
-          initialMode={authModal}
-          onClose={() => setAuthModal(null)}
-        />
+        <AuthModal initialMode={authModal} onClose={() => setAuthModal(null)} />
       )}
 
       <main id="main-content" className="flex-1" role="main" tabIndex={-1}>
         {children}
       </main>
 
-      <footer role="contentinfo" className="mt-24 py-16 px-6 bg-ink-900">
+      {/* ── 푸터 ── */}
+      <footer role="contentinfo" className="mt-24 py-16 px-6 bg-ink-900 dark:bg-[#050b14]">
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-10 mb-12">
             <div className="md:col-span-2">
@@ -136,12 +156,10 @@ export default function Layout({ children }) {
               <p className="text-sm text-paper-400 leading-relaxed max-w-xs">
                 먼저 망해본 사람의 리포트로<br />시행착오를 줄이세요.
               </p>
-              <div className="flex gap-3 mt-6">
-                <a href="mailto:b2b@failbank.kr"
-                  className="text-xs text-paper-500 hover:text-gold-400 transition-colors font-mono">
-                  b2b@failbank.kr
-                </a>
-              </div>
+              <a href="mailto:b2b@failbank.kr"
+                className="text-xs text-paper-500 hover:text-gold-400 transition-colors font-mono mt-4 inline-block">
+                b2b@failbank.kr
+              </a>
             </div>
             <div>
               <div className="text-xs font-semibold text-paper-300 uppercase tracking-wider mb-4">시장 데이터</div>

@@ -8,9 +8,17 @@
     -moz-osx-font-smoothing: grayscale;
     background-color: #f8fafc;
   }
+  html.dark {
+    background-color: #070d1a;
+  }
   body {
     @apply bg-paper-50 text-ink-900 font-sans;
     min-height: 100vh;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+  .dark body {
+    background-color: #070d1a;
+    color: #e2e8f0;
   }
   h1, h2, h3, h4, h5, h6 {
     letter-spacing: -0.02em;
@@ -184,4 +192,97 @@
 
 .tabular-nums {
   font-variant-numeric: tabular-nums;
+}
+
+/* ══════════════════════════════════════════
+   다크 모드 컴포넌트 오버라이드
+══════════════════════════════════════════ */
+
+/* 카드 */
+.dark .paper-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+.dark .paper-card:hover {
+  box-shadow: 0 10px 40px -8px rgb(0 0 0 / 0.5), 0 4px 16px -4px rgb(0 0 0 / 0.3);
+}
+
+/* 포스트 카드 (browse) */
+.dark .post-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+.dark .post-card:hover {
+  box-shadow: 0 10px 40px -8px rgb(0 0 0 / 0.5);
+}
+
+/* 에코시스템 카드 */
+.dark .ecosystem-card {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+/* 인풋 */
+.dark .input-field,
+.dark .textarea-field,
+.dark select.input-field {
+  background-color: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+.dark .input-field::placeholder,
+.dark .textarea-field::placeholder {
+  color: #475569;
+}
+.dark select.input-field option {
+  background-color: #1e293b;
+  color: #e2e8f0;
+}
+.dark .input-field:focus,
+.dark .textarea-field:focus {
+  border-color: #f59e0b;
+  box-shadow: 0 0 0 3px rgb(245 158 11 / 0.15);
+}
+
+/* 버튼 */
+.dark .btn-secondary {
+  background-color: #1e293b;
+  color: #e2e8f0;
+  border-color: #334155;
+}
+.dark .btn-secondary:hover {
+  background-color: #334155;
+  border-color: #475569;
+}
+.dark .btn-primary {
+  background-color: #1e293b;
+  border: 1px solid #475569;
+}
+.dark .btn-primary:hover {
+  background-color: #334155;
+}
+
+/* 섹션 구분선 */
+.dark .section-divider {
+  border-top-color: #1e293b;
+}
+
+/* 배지 (다크모드에서 배경 조정) */
+.dark .badge-gold  { background-color: rgb(245 158 11 / 0.15); border-color: rgb(245 158 11 / 0.3); color: #fcd34d; }
+.dark .badge-sky   { background-color: rgb(14 165 233 / 0.15); border-color: rgb(14 165 233 / 0.3); color: #7dd3fc; }
+.dark .badge-rose  { background-color: rgb(244 63 94 / 0.15);  border-color: rgb(244 63 94 / 0.3);  color: #fda4af; }
+
+/* 스크롤바 */
+.dark ::-webkit-scrollbar-track { background: #0f172a; }
+.dark ::-webkit-scrollbar-thumb { background: #334155; }
+.dark ::-webkit-scrollbar-thumb:hover { background: #f59e0b; }
+
+/* 글로우 조정 */
+.dark .glow-gold {
+  box-shadow: 0 0 80px -20px rgba(245, 158, 11, 0.25);
+}
+
+/* 골드 디바이더 */
+.dark .divider-gold {
+  background: linear-gradient(90deg, transparent, rgba(245,158,11,0.25), transparent);
 }

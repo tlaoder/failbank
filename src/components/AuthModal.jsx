@@ -30,11 +30,11 @@ export default function AuthModal({ initialMode = 'login', onClose }) {
       <Overlay onClose={onClose}>
         <div className="text-center py-4">
           <div className="text-2xl mb-4 text-ink-400">⚠</div>
-          <h2 className="text-xl font-bold mb-3 text-ink-900">Supabase 연결 필요</h2>
-          <p className="text-sm text-ink-500 leading-relaxed">
+          <h2 className="text-xl font-bold mb-3 text-ink-900 dark:text-paper-50">Supabase 연결 필요</h2>
+          <p className="text-sm text-ink-500 dark:text-paper-400 leading-relaxed">
             회원 기능을 사용하려면<br />
-            <code className="text-xs bg-paper-100 px-2 py-0.5 font-mono">VITE_SUPABASE_URL</code>과<br />
-            <code className="text-xs bg-paper-100 px-2 py-0.5 font-mono">VITE_SUPABASE_ANON_KEY</code>를<br />
+            <code className="text-xs bg-paper-100 dark:bg-ink-700 px-2 py-0.5 font-mono">VITE_SUPABASE_URL</code>과<br />
+            <code className="text-xs bg-paper-100 dark:bg-ink-700 px-2 py-0.5 font-mono">VITE_SUPABASE_ANON_KEY</code>를<br />
             환경변수에 설정해주세요.
           </p>
           <button onClick={onClose} className="mt-6 btn-primary px-8 py-3">확인</button>
@@ -49,9 +49,9 @@ export default function AuthModal({ initialMode = 'login', onClose }) {
       <Overlay onClose={onClose}>
         <div className="text-center py-4">
           <div className="text-4xl mb-4 text-gold-500">✉</div>
-          <h2 className="text-xl font-bold mb-3 text-ink-900">이메일을 확인해주세요</h2>
-          <p className="text-sm text-ink-500 leading-relaxed mb-6">
-            <strong className="text-ink-700">{email}</strong>으로<br />
+          <h2 className="text-xl font-bold mb-3 text-ink-900 dark:text-paper-50">이메일을 확인해주세요</h2>
+          <p className="text-sm text-ink-500 dark:text-paper-400 leading-relaxed mb-6">
+            <strong className="text-ink-700 dark:text-paper-200">{email}</strong>으로<br />
             인증 링크를 발송했습니다.<br />
             링크를 클릭하면 로그인됩니다.
           </p>
@@ -84,7 +84,7 @@ export default function AuthModal({ initialMode = 'login', onClose }) {
   return (
     <Overlay onClose={onClose}>
       {/* 탭 */}
-      <div className="flex border-b border-paper-200 -mx-10 px-10 mb-8">
+      <div className="flex border-b border-paper-200 dark:border-ink-700 -mx-10 px-10 mb-8">
         {['login', 'signup'].map((m) => (
           <button
             key={m}
@@ -92,7 +92,7 @@ export default function AuthModal({ initialMode = 'login', onClose }) {
             className={`flex-1 pb-4 text-xs font-mono uppercase tracking-widest transition-colors border-b-2 -mb-px ${
               mode === m
                 ? 'border-gold-500 text-gold-600'
-                : 'border-transparent text-ink-400 hover:text-ink-700'
+                : 'border-transparent text-ink-400 dark:text-paper-500 hover:text-ink-700 dark:hover:text-paper-200'
             }`}
           >
             {m === 'login' ? '로그인' : '회원가입'}
@@ -144,7 +144,7 @@ export default function AuthModal({ initialMode = 'login', onClose }) {
       </form>
 
       {mode === 'login' && (
-        <p className="text-center text-xs text-ink-400 mt-6">
+        <p className="text-center text-xs text-ink-400 dark:text-paper-500 mt-6">
           계정이 없으신가요?{' '}
           <button onClick={() => { setMode('signup'); setError('') }}
             className="text-gold-500 hover:text-gold-600 underline">
@@ -166,7 +166,7 @@ function Overlay({ onClose, children }) {
       onClick={e => { if (e.target === e.currentTarget) onClose() }}
     >
       <div className="absolute inset-0 bg-ink-900/50 backdrop-blur-sm" aria-hidden />
-      <div className="relative bg-white border border-paper-200 w-full max-w-md px-10 py-10 shadow-xl animate-fade-up">
+      <div className="relative bg-white dark:bg-ink-800 border border-paper-200 dark:border-ink-700 w-full max-w-md px-10 py-10 shadow-xl animate-fade-up">
         <button
           onClick={onClose}
           aria-label="닫기"
@@ -184,13 +184,13 @@ function Overlay({ onClose, children }) {
 function Field({ id, label, ...inputProps }) {
   return (
     <div>
-      <label htmlFor={id} className="text-[9px] tracking-[0.3em] text-ink-500 uppercase font-mono block mb-2">
+      <label htmlFor={id} className="text-[9px] tracking-[0.3em] text-ink-500 dark:text-paper-400 uppercase font-mono block mb-2">
         {label}
       </label>
       <input
         id={id}
         required
-        className="w-full border border-paper-300 bg-paper-50 px-4 py-3 text-sm text-ink-800 placeholder-paper-400 focus:outline-none focus:border-ink-600 focus:bg-white transition-colors"
+        className="w-full border border-paper-300 dark:border-ink-600 bg-paper-50 dark:bg-ink-700 px-4 py-3 text-sm text-ink-800 dark:text-paper-100 placeholder-paper-400 dark:placeholder-ink-500 focus:outline-none focus:border-ink-600 dark:focus:border-ink-400 focus:bg-white dark:focus:bg-ink-600 transition-colors"
         {...inputProps}
       />
     </div>

@@ -29,7 +29,7 @@ export default function SellPage() {
   }, [score, monthlySales, tier])
 
   return (
-    <div className="bg-paper-50 min-h-screen">
+    <div className="bg-paper-50 dark:bg-[#070d1a] min-h-screen">
 
       {/* ── HERO ── */}
       <div className="bg-hero-gradient px-6 pt-20 pb-24 relative overflow-hidden">
@@ -55,7 +55,7 @@ export default function SellPage() {
         {/* ── 4가지 이유 ── */}
         <section className="mb-20">
           <span className="badge-gold mb-4 inline-flex">The Four Motives</span>
-          <h2 className="text-4xl font-black mb-10 text-ink-900">판매자가 글을 쓰는 4가지 이유</h2>
+          <h2 className="text-4xl font-black mb-10 text-ink-900 dark:text-paper-50">판매자가 글을 쓰는 4가지 이유</h2>
           <div className="grid md:grid-cols-2 gap-5">
             <MotiveCard n="01" title="진짜 수익" subtitle="프리미엄 티어 도입" highlight
               body="기본 리포트만으론 부족합니다. 1:1 상담·영상 인터뷰 옵션을 추가해 회당 25,000~30,000원, 엔터프라이즈는 50만원 이상까지 가능합니다." />
@@ -97,8 +97,8 @@ export default function SellPage() {
         {/* ── 수익 계산기 ── */}
         <section className="mb-20">
           <span className="badge-sky mb-4 inline-flex">Earnings Calculator</span>
-          <h2 className="text-4xl font-black mb-2 text-ink-900">내 수익은 얼마일까?</h2>
-          <p className="text-paper-400 mb-10">품질 점수와 월 판매량을 조절해보세요.</p>
+          <h2 className="text-4xl font-black mb-2 text-ink-900 dark:text-paper-50">내 수익은 얼마일까?</h2>
+          <p className="text-paper-400 dark:text-paper-500 mb-10">품질 점수와 월 판매량을 조절해보세요.</p>
 
           <div className="grid lg:grid-cols-12 gap-8">
             <div className="lg:col-span-7 space-y-8">
@@ -115,8 +115,8 @@ export default function SellPage() {
               {/* 점수 슬라이더 */}
               <div className="paper-card p-6">
                 <div className="flex justify-between items-baseline mb-4">
-                  <span className="text-sm font-semibold text-ink-700">AI 품질 점수</span>
-                  <span className="text-3xl font-black tabular-nums text-ink-900">
+                  <span className="text-sm font-semibold text-ink-700 dark:text-paper-200">AI 품질 점수</span>
+                  <span className="text-3xl font-black tabular-nums text-ink-900 dark:text-paper-50">
                     {score}<span className="text-base text-paper-400 ml-1">/100</span>
                   </span>
                 </div>
@@ -133,8 +133,8 @@ export default function SellPage() {
               {/* 판매량 슬라이더 */}
               <div className="paper-card p-6">
                 <div className="flex justify-between items-baseline mb-4">
-                  <span className="text-sm font-semibold text-ink-700">월 예상 판매량</span>
-                  <span className="text-3xl font-black tabular-nums text-ink-900">
+                  <span className="text-sm font-semibold text-ink-700 dark:text-paper-200">월 예상 판매량</span>
+                  <span className="text-3xl font-black tabular-nums text-ink-900 dark:text-paper-50">
                     {monthlySales}<span className="text-base text-paper-400 ml-1">건</span>
                   </span>
                 </div>
@@ -154,9 +154,9 @@ export default function SellPage() {
                 </div>
 
                 <div className="space-y-5">
-                  <div className="pb-5 border-b border-paper-100">
+                  <div className="pb-5 border-b border-paper-100 dark:border-ink-600">
                     <div className="text-xs text-paper-400 mb-1">리포트 1건당 가격</div>
-                    <div className="text-3xl font-black tabular-nums text-ink-900">
+                    <div className="text-3xl font-black tabular-nums text-ink-900 dark:text-paper-50">
                       {calc.reportPrice.toLocaleString()}
                       <span className="text-base text-paper-400 ml-1">원</span>
                     </div>
@@ -165,7 +165,7 @@ export default function SellPage() {
                     </div>
                   </div>
 
-                  <div className="pb-5 border-b border-paper-100">
+                  <div className="pb-5 border-b border-paper-100 dark:border-ink-600">
                     <div className="text-xs text-paper-400 mb-1">월 정산 예상</div>
                     <div className="text-4xl font-black text-gold-500 tabular-nums">
                       {calc.monthly.toLocaleString()}
@@ -175,7 +175,7 @@ export default function SellPage() {
 
                   <div>
                     <div className="text-xs text-paper-400 mb-1">연간 정산 예상</div>
-                    <div className="text-3xl font-black tabular-nums text-ink-900">
+                    <div className="text-3xl font-black tabular-nums text-ink-900 dark:text-paper-50">
                       {calc.annual.toLocaleString()}
                       <span className="text-base text-paper-400 ml-1">원</span>
                     </div>
@@ -195,8 +195,8 @@ export default function SellPage() {
         {/* ── B2B 패키지 ── */}
         <section id="b2b" className="mb-20 scroll-mt-24">
           <span className="badge-gold mb-4 inline-flex">B2B Package</span>
-          <h2 className="text-4xl font-black mb-2 text-ink-900">기관 단위 도입</h2>
-          <p className="text-paper-400 mb-10">
+          <h2 className="text-4xl font-black mb-2 text-ink-900 dark:text-paper-50">기관 단위 도입</h2>
+          <p className="text-paper-400 dark:text-paper-500 mb-10">
             액셀러레이터·대학·VC를 위한 전용 패키지. 멤버 전체가 실패 데이터를 활용합니다.
           </p>
           <div className="grid md:grid-cols-3 gap-5 mb-6">
@@ -242,8 +242,8 @@ export default function SellPage() {
 
         {/* ── 최종 CTA ── */}
         <section className="text-center py-16 border-t border-paper-100">
-          <h2 className="text-3xl font-black mb-4 text-ink-900">준비됐다면, 첫 리포트를 써보세요.</h2>
-          <p className="text-paper-400 mb-8">첫 100명 수수료 0% · 5단계 템플릿 30분 작성</p>
+          <h2 className="text-3xl font-black mb-4 text-ink-900 dark:text-paper-50">준비됐다면, 첫 리포트를 써보세요.</h2>
+          <p className="text-paper-400 dark:text-paper-500 mb-8">첫 100명 수수료 0% · 5단계 템플릿 30분 작성</p>
           <Link to="/submit" className="btn-gold inline-flex text-base px-10 py-4">
             리포트 작성 시작하기 →
           </Link>
@@ -257,9 +257,9 @@ function MotiveCard({ n, title, subtitle, body, highlight = false }) {
   return (
     <div className={`paper-card p-8 ${highlight ? 'ring-2 ring-gold-400/50' : ''}`}>
       <div className="font-mono text-xs text-gold-500 tracking-widest mb-3">MOTIVE {n}</div>
-      <div className="text-2xl font-bold mb-1 text-ink-900">{title}</div>
+      <div className="text-2xl font-bold mb-1 text-ink-900 dark:text-paper-50">{title}</div>
       <div className="text-xs text-paper-400 uppercase tracking-wider mb-4 font-mono">{subtitle}</div>
-      <p className="text-sm text-paper-500 leading-relaxed">{body}</p>
+      <p className="text-sm text-paper-500 dark:text-paper-400 leading-relaxed">{body}</p>
     </div>
   )
 }
@@ -277,17 +277,17 @@ function B2BCard({ label, price, unit, tag, items, highlight = false }) {
   return (
     <div className={`rounded-2xl p-8 ${highlight
       ? 'bg-ink-900 border border-ink-800'
-      : 'bg-white border border-paper-100 shadow-card'}`}
+      : 'bg-white dark:bg-ink-800 border border-paper-100 dark:border-ink-700 shadow-card'}`}
     >
       <div className={`text-xs tracking-wider uppercase font-mono mb-2 ${highlight ? 'text-gold-400' : 'text-gold-500'}`}>
         {tag}
       </div>
-      <div className={`text-xl font-bold mb-2 ${highlight ? 'text-white' : 'text-ink-900'}`}>{label}</div>
-      <div className={`text-3xl font-black tabular-nums mb-1 ${highlight ? 'text-gold-400' : 'text-ink-900'}`}>
+      <div className={`text-xl font-bold mb-2 ${highlight ? 'text-white' : 'text-ink-900 dark:text-paper-50'}`}>{label}</div>
+      <div className={`text-3xl font-black tabular-nums mb-1 ${highlight ? 'text-gold-400' : 'text-ink-900 dark:text-paper-50'}`}>
         {price}
         <span className={`text-sm font-normal ml-1 ${highlight ? 'text-slate-400' : 'text-paper-400'}`}>원/{unit}</span>
       </div>
-      <ul className={`mt-5 space-y-2 text-sm ${highlight ? 'text-slate-400' : 'text-paper-500'}`}>
+      <ul className={`mt-5 space-y-2 text-sm ${highlight ? 'text-slate-400' : 'text-paper-500 dark:text-paper-400'}`}>
         {items.map(item => (
           <li key={item} className="flex gap-2">
             <span className={highlight ? 'text-gold-400' : 'text-gold-500'}>→</span>
@@ -306,11 +306,11 @@ function TierButton({ active, onClick, label, sub }) {
       className={`p-4 text-left rounded-xl transition-all border-2 ${
         active
           ? 'bg-ink-900 text-white border-ink-900 shadow-sm'
-          : 'bg-white text-ink-700 border-paper-200 hover:border-paper-400'
+          : 'bg-white dark:bg-ink-800 text-ink-700 dark:text-paper-200 border-paper-200 dark:border-ink-600 hover:border-paper-400 dark:hover:border-ink-500'
       }`}
     >
       <div className="text-sm font-semibold">{label}</div>
-      <div className={`text-xs mt-0.5 ${active ? 'text-paper-400' : 'text-paper-400'}`}>{sub}</div>
+      <div className="text-xs mt-0.5 text-paper-400">{sub}</div>
     </button>
   )
 }
